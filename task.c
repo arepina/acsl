@@ -17,7 +17,9 @@
           ==> \at(a[k],L1) == \at(a[k],L2);
  */
 
-
+/*@ predicate HasValue{A}(int* b, integer n, integer k) =
+       \exists integer i; i == n && b[i] == k;
+*/
 
 /*@ axiomatic MaxInd{
  logic integer max_ind{L}(int *a, unsigned n);
@@ -27,10 +29,6 @@
  axiom a2:
     \forall int *a, unsigned n, integer i; 0 <= i < n ==> a[i] <= a[max_ind(a,n)];
  }
-*/
-
-/*@
-    predicate HasValue{A}(int* a, integer n, integer k) = \exists integer i; i == n && a[n] == k;
 */
 
 //@ ghost int size_b = 5;
@@ -59,6 +57,7 @@ void task(int a[], int b[], unsigned size_a) {
         //@assert Swap{Pre,Here}(b,a[i],a[i+1]);
     }
 }
+
 
 
 #ifdef OUT_OF_TASK

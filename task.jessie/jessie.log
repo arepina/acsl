@@ -17,10 +17,10 @@ Typing axiomatic MaxInd
 Typing lemma/axiom a1
 Typing lemma/axiom a2
 occurrences table for axiom a2 in axiomatic MaxInd:
-  144: L ;
+  145: L ;
   
 occurrences table for axiom a1 in axiomatic MaxInd:
-  144: L ;L ;
+  145: L ;L ;
   
 Computation of call graph
 ***********************************
@@ -36,11 +36,11 @@ Component 2:
  _Swap calls: 
 
 Component 3:
- max_ind calls: max_ind, max_ind,
-max_ind
+ _HasValue calls: 
 
 Component 4:
- _HasValue calls: 
+ max_ind calls: max_ind, max_ind,
+max_ind
 
 ******************************
 Call graph: has 1 components
@@ -92,26 +92,26 @@ Effects for logic function _Swap:
 Effects: doing one iteration
 Effects: doing one iteration
 Effects: fixpoint reached
-Effects for logic function max_ind:
+Effects for logic function _HasValue:
  alloc_table: 
  tag_table: 
- memories: (a_4_5 : mem-field "intM") at (L)
+ memories: (b_5 : mem-field "intM") at (A)
  raw memories: 
  precise memories: 
  globals: 
- locals: 
+ locals: k_2 at (Here), n_4 at (Here), b at (Here)
 
 Effects: doing one iteration
 Effects: doing one iteration
 Effects: fixpoint reached
-Effects for logic function _HasValue:
+Effects for logic function max_ind:
  alloc_table: 
  tag_table: 
- memories: (a_7_6 : mem-field "intM") at (A)
+ memories: (a_4_6 : mem-field "intM") at (L)
  raw memories: 
  precise memories: 
  globals: 
- locals: k_2 at (Here), n_7 at (Here), a_7 at (Here)
+ locals: 
 
 Effects: doing one iteration...
 Effects: doing one iteration...
@@ -919,8 +919,8 @@ Translate standalone logic functions
 Logic function _Unchanged
 Logic function _Unchanged_0
 Logic function _Swap
-Logic function max_ind
 Logic function _HasValue
+Logic function max_ind
 Translate axiomatic declarations
 Axiomatic MaxInd
 Axiomatic Padding
