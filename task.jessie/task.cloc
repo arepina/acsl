@@ -12,19 +12,19 @@ end = 29
 
 [_C_48]
 file = "/Users/anastasia/Downloads/hw/task.c"
-line = 40
+line = 41
 begin = 13
-end = 77
+end = 61
 
 [_C_31]
 file = "/Users/anastasia/Downloads/hw/task.c"
 line = 57
-begin = 12
-end = 17
+begin = 10
+end = 11
 
 [_C_41]
 file = "/Users/anastasia/Downloads/hw/task.c"
-line = 42
+line = 43
 begin = 23
 end = 53
 
@@ -45,13 +45,13 @@ end = 67
 file = "/Users/anastasia/Downloads/hw/task.c"
 line = 57
 begin = 10
-end = 11
+end = 18
 
 [_C_23]
 file = "/Users/anastasia/Downloads/hw/task.c"
 line = 56
 begin = 18
-end = 19
+end = 29
 
 [_C_19]
 file = "/Users/anastasia/Downloads/hw/task.c"
@@ -61,7 +61,7 @@ end = 27
 
 [_C_42]
 file = "/Users/anastasia/Downloads/hw/task.c"
-line = 42
+line = 44
 begin = 23
 end = 53
 
@@ -74,9 +74,9 @@ end = 93
 
 [_C_13]
 file = "/Users/anastasia/Downloads/hw/task.c"
-line = 54
-begin = 25
-end = 35
+line = 55
+begin = 20
+end = 21
 
 [_C_5]
 file = "/Users/anastasia/Downloads/hw/task.c"
@@ -86,33 +86,33 @@ end = 17
 
 [_C_36]
 file = "/Users/anastasia/Downloads/hw/task.c"
-line = 57
+line = 58
 begin = 8
-end = 25
+end = 45
 
 [_C_12]
 file = "/Users/anastasia/Downloads/hw/task.c"
-line = 48
-begin = 33
-end = 48
+line = 54
+begin = 25
+end = 35
 
 [_C_33]
 file = "/Users/anastasia/Downloads/hw/task.c"
 line = 57
-begin = 10
-end = 18
+begin = 8
+end = 9
 
 [_C_22]
 file = "/Users/anastasia/Downloads/hw/task.c"
 line = 56
-begin = 20
-end = 28
+begin = 18
+end = 19
 
 [_C_9]
 file = "/Users/anastasia/Downloads/hw/task.c"
 line = 49
-begin = 21
-end = 31
+begin = 28
+end = 48
 
 [_C_30]
 file = "/Users/anastasia/Downloads/hw/task.c"
@@ -128,27 +128,27 @@ end = 29
 
 [_C_49]
 file = "/Users/anastasia/Downloads/hw/task.c"
-line = 41
+line = 42
 begin = 13
 end = 133
 
 [_C_24]
 file = "/Users/anastasia/Downloads/hw/task.c"
 line = 56
-begin = 18
-end = 29
+begin = 10
+end = 11
 
 [_C_45]
 file = "/Users/anastasia/Downloads/hw/task.c"
-line = 37
+line = 38
 begin = 13
-end = 38
+end = 48
 
 [_C_20]
 file = "/Users/anastasia/Downloads/hw/task.c"
 line = 56
-begin = 22
-end = 27
+begin = 20
+end = 21
 
 [_C_38]
 file = "/Users/anastasia/Downloads/hw/task.c"
@@ -172,8 +172,8 @@ end = 55
 [_C_17]
 file = "/Users/anastasia/Downloads/hw/task.c"
 line = 55
-begin = 18
-end = 25
+begin = 8
+end = 11
 
 [UnchangedSection]
 name = "Lemma UnchangedSection"
@@ -186,98 +186,98 @@ end = 145
 file = "/Users/anastasia/Downloads/hw/task.c"
 line = 51
 begin = 21
-end = 85
+end = 51
 
 [_C_27]
 file = "/Users/anastasia/Downloads/hw/task.c"
 line = 56
 begin = 8
-end = 9
+end = 29
 
 [_C_46]
-file = "/Users/anastasia/Downloads/hw/task.c"
-line = 38
-begin = 13
-end = 48
-
-[_C_44]
-file = "/Users/anastasia/Downloads/hw/task.c"
-line = 36
-begin = 13
-end = 28
-
-[_C_15]
-file = "/Users/anastasia/Downloads/hw/task.c"
-line = 55
-begin = 20
-end = 24
-
-[_C_26]
-file = "/Users/anastasia/Downloads/hw/task.c"
-line = 56
-begin = 10
-end = 14
-
-[task]
-name = "Function task"
-file = "/Users/anastasia/Downloads/hw/task.c"
-line = 45
-begin = 5
-end = 44
-
-[_C_47]
 file = "/Users/anastasia/Downloads/hw/task.c"
 line = 39
 begin = 13
 end = 65
 
+[_C_44]
+file = "/Users/anastasia/Downloads/hw/task.c"
+line = 37
+begin = 13
+end = 38
+
+[_C_15]
+file = "/Users/anastasia/Downloads/hw/task.c"
+line = 55
+begin = 18
+end = 19
+
+[_C_26]
+file = "/Users/anastasia/Downloads/hw/task.c"
+line = 56
+begin = 8
+end = 9
+
+[task]
+name = "Function task"
+file = "/Users/anastasia/Downloads/hw/task.c"
+line = 46
+begin = 5
+end = 44
+
+[_C_47]
+file = "/Users/anastasia/Downloads/hw/task.c"
+line = 40
+begin = 13
+end = 77
+
 [_C_10]
 file = "/Users/anastasia/Downloads/hw/task.c"
-line = 48
+line = 49
 begin = 28
-end = 48
+end = 34
 
 [_C_40]
 file = "/Users/anastasia/Downloads/hw/task.c"
-line = 54
-begin = 37
-end = 43
+line = 43
+begin = 23
+end = 53
 
 [_C_8]
 file = "/Users/anastasia/Downloads/hw/task.c"
 line = 50
 begin = 21
-end = 51
+end = 31
 
 [_C_18]
 file = "/Users/anastasia/Downloads/hw/task.c"
-line = 55
-begin = 8
-end = 11
+line = 56
+begin = 22
+end = 27
 
 [_C_29]
 file = "/Users/anastasia/Downloads/hw/task.c"
-line = 56
-begin = 8
-end = 29
+line = 57
+begin = 12
+end = 17
 
 [_C_14]
 file = "/Users/anastasia/Downloads/hw/task.c"
 line = 55
 begin = 20
-end = 21
+end = 24
 
 [_C_37]
 file = "/Users/anastasia/Downloads/hw/task.c"
-line = 58
-begin = 8
-end = 37
+line = 54
+begin = 37
+end = 43
 
 [_C_43]
 file = "/Users/anastasia/Downloads/hw/task.c"
-line = 43
-begin = 23
-end = 53
+line = 36
+begin = 13
+end = 28
 
 [_C_2]
 file = "/Users/anastasia/Downloads/hw/task.c"
@@ -289,13 +289,13 @@ end = 107
 file = "/Users/anastasia/Downloads/hw/task.c"
 line = 57
 begin = 8
-end = 9
+end = 25
 
 [_C_16]
 file = "/Users/anastasia/Downloads/hw/task.c"
 line = 55
 begin = 18
-end = 19
+end = 25
 
 [_C_1]
 file = "/Users/anastasia/Downloads/hw/task.c"
@@ -307,7 +307,7 @@ end = 132
 file = "/Users/anastasia/Downloads/hw/task.c"
 line = 56
 begin = 10
-end = 11
+end = 14
 
 [_C_39]
 file = "/Users/anastasia/Downloads/hw/task.c"
@@ -317,13 +317,13 @@ end = 43
 
 [_C_11]
 file = "/Users/anastasia/Downloads/hw/task.c"
-line = 48
-begin = 28
-end = 34
+line = 49
+begin = 33
+end = 48
 
 [_C_21]
 file = "/Users/anastasia/Downloads/hw/task.c"
 line = 56
 begin = 20
-end = 21
+end = 28
 

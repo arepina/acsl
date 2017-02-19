@@ -10,10 +10,10 @@
         ==> Unchanged{K,L}(a, m);
 */
 
-/*@ predicate Swap{L1,L2}(int *a, integer i, integer j) =
+/*@ predicate Swap{L1,L2}(int *a, integer i, integer j, integer size) =
        \at(a[i],L1) == \at(a[j],L2) &&
        \at(a[j],L1) == \at(a[i],L2) &&
-       \forall integer k; k != i && k != j
+       \forall integer k; 0 <= k < size && k != i && k != j
           ==> \at(a[k],L1) == \at(a[k],L2);
  */
 
@@ -38,6 +38,7 @@
     requires \valid(b + (0..max_ind(a, size_a)));
     requires \forall integer k; 0 <= k < size_a ==> a[k] < size_b;
     requires \forall integer k; 0 <= k < size_a ==> HasValue(b, size_b, a[k]);
+    requires \forall integer k; 0 <= k < size_a ==> a[k] >= 0;
     requires \exists integer mx; 0 <= mx < size_a && (\forall integer k; 0 <= k < size_a ==> a[k] <= a[mx]) && \valid(b + (0..a[mx]));
     ensures unchanged: Unchanged{Pre,Here}(b, size_b);
     ensures unchanged: Unchanged{Pre,Here}(a, size_a);
@@ -54,7 +55,7 @@ void task(int a[], int b[], unsigned size_a) {
         int tmp = b[a[i]];
         b[a[i]] = b[a[i + 1]];
         b[a[i + 1]] = tmp;
-        //@assert Swap{Pre,Here}(b,a[i],a[i+1]);
+        //@assert Swap{Pre,Here}(b,a[i],a[i+1], size_b);
     }
 }
 
