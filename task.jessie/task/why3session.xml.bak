@@ -337,7 +337,7 @@
 </theory>
 <theory name="Logic__Swap" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Function_task_safety" sum="2e0ce88f3843bd1b679644b063d7f1af" expanded="true">
+<theory name="Function_task_safety" sum="426288ccf930ed3a80d55961ea28c39a" expanded="true">
  <goal name="WP_parameter task" expl="Function task, safety" expanded="true">
  <proof prover="0" obsolete="true"><result status="timeout" time="4.97"/></proof>
  <transf name="split_goal_wp" expanded="true">
@@ -348,14 +348,14 @@
   <proof prover="0"><result status="valid" time="0.02" steps="17"/></proof>
   </goal>
   <goal name="WP_parameter task.3" expl="3. Pointer dereference (Dereference by offset. Validity)">
-  <proof prover="0"><result status="valid" time="0.18" steps="449"/></proof>
+  <proof prover="0"><result status="timeout" time="4.95"/></proof>
   <proof prover="1" obsolete="true"><result status="timeout" time="4.97"/></proof>
   </goal>
   <goal name="WP_parameter task.4" expl="4. Integer cast (integer overflow)">
   <proof prover="0" steplimit="-1"><result status="valid" time="0.03" steps="25"/></proof>
   </goal>
   <goal name="WP_parameter task.5" expl="5. integer overflow">
-  <proof prover="0"><result status="valid" time="0.05" steps="119"/></proof>
+  <proof prover="0"><result status="valid" time="0.05" steps="115"/></proof>
   <proof prover="1" obsolete="true"><result status="valid" time="0.22"/></proof>
   </goal>
   <goal name="WP_parameter task.6" expl="6. Pointer dereference (Dereference by offset. Validity)">
@@ -384,7 +384,7 @@
   </transf>
   </goal>
   <goal name="WP_parameter task.7" expl="7. Pointer dereference (Dereference by offset. Validity)">
-  <proof prover="0"><result status="valid" time="0.37" steps="730"/></proof>
+  <proof prover="0"><result status="valid" time="0.19" steps="407"/></proof>
   <proof prover="1" obsolete="true"><result status="timeout" time="4.97"/></proof>
   </goal>
   <goal name="WP_parameter task.8" expl="8. Pointer dereference (Dereference by offset. Validity)">
@@ -413,7 +413,7 @@
   <proof prover="0" steplimit="-1"><result status="valid" time="0.02" steps="51"/></proof>
   </goal>
   <goal name="WP_parameter task.15" expl="15. integer overflow">
-  <proof prover="0"><result status="valid" time="0.29" steps="277"/></proof>
+  <proof prover="0"><result status="valid" time="0.29" steps="271"/></proof>
   </goal>
   <goal name="WP_parameter task.16" expl="16. loop variant decrease">
   <proof prover="0"><result status="valid" time="0.03" steps="45"/></proof>
@@ -422,7 +422,7 @@
  </transf>
  </goal>
 </theory>
-<theory name="Function_task_behaviors" sum="b0267143016dab324d9f0e80e6a4bfde" expanded="true">
+<theory name="Function_task_behaviors" sum="32d493060f289380deac816608ddf72c" expanded="true">
  <goal name="WP_parameter task_ensures_default" expl="Function task, default behavior" expanded="true">
  <proof prover="0" obsolete="true"><result status="timeout" time="4.98"/></proof>
  <transf name="split_goal_wp" expanded="true">
@@ -430,7 +430,7 @@
   <proof prover="0"><result status="valid" time="0.04" steps="22"/></proof>
   </goal>
   <goal name="WP_parameter task_ensures_default.2" expl="2. Assertion in line 58">
-  <proof prover="0" steplimit="-1"><result status="timeout" time="4.98"/></proof>
+  <proof prover="0" steplimit="-1"><result status="timeout" time="4.73"/></proof>
   </goal>
   <goal name="WP_parameter task_ensures_default.3" expl="3. loop invariant preservation">
   <proof prover="0" obsolete="true"><result status="timeout" time="5.07"/></proof>
@@ -445,10 +445,10 @@
    <proof prover="0" steplimit="-1"><result status="valid" time="0.06" steps="121"/></proof>
    </goal>
    <goal name="WP_parameter task_ensures_default.3.4" expl="4. Function task, default behavior">
-   <proof prover="0" steplimit="-1"><result status="valid" time="1.41" steps="2162"/></proof>
+   <proof prover="0" steplimit="-1"><result status="valid" time="1.41" steps="2120"/></proof>
    </goal>
    <goal name="WP_parameter task_ensures_default.3.5" expl="5. Assigns clause">
-   <proof prover="0" steplimit="-1"><result status="valid" time="1.21" steps="2366"/></proof>
+   <proof prover="0" steplimit="-1"><result status="valid" time="0.96" steps="1778"/></proof>
    </goal>
   </transf>
   </goal>

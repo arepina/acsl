@@ -385,7 +385,7 @@
   <proof prover="1" obsolete="true"><result status="timeout" time="4.97"/></proof>
   </goal>
   <goal name="WP_parameter task.7" expl="7. Pointer dereference (Dereference by offset. Validity)">
-  <proof prover="0"><result status="valid" time="0.39" steps="730"/></proof>
+  <proof prover="0"><result status="valid" time="0.38" steps="730"/></proof>
   </goal>
   <goal name="WP_parameter task.8" expl="8. Pointer dereference (Dereference by offset. Validity)">
   <proof prover="0"><result status="valid" time="0.02" steps="30"/></proof>
@@ -430,7 +430,7 @@
   <proof prover="0"><result status="valid" time="0.04" steps="22"/></proof>
   </goal>
   <goal name="WP_parameter task_ensures_default.2" expl="2. Assertion in line 58">
-  <proof prover="0" steplimit="-1"><result status="valid" time="0.99" steps="1838"/></proof>
+  <proof prover="0" steplimit="-1"><result status="valid" time="1.13" steps="1852"/></proof>
   </goal>
   <goal name="WP_parameter task_ensures_default.3" expl="3. loop invariant preservation">
   <proof prover="0" obsolete="true"><result status="timeout" time="5.07"/></proof>
