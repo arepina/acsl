@@ -27,28 +27,35 @@
  }
 */
 
-/*@ axiomatic Cnt {
-     logic integer Count{L}(int* a, integer n, int v);
 
-     predicate Permutation{L1,L2}(int *a, integer n) =
-        \forall int v; Count{L1}(a, n, v) == Count{L2}(a, n, v);
+/*@ axiomatic Permut {
+    // permut{L1,L2}(t1 ,t2 ,n) is true whenever t1[0..n-1] in state L1
+    // is a permut of t2[0..n-1] in state L2
 
-     axiom CountEmpty:
-        \forall int *a, v, integer n;
-           n <= 0 ==> Count(a, n, v) == 0;
-          axiom CountOneHit:
-        \forall int *a, v, integer n;
-                     n > 0 && a[n - 1] == v ==> Count(a, n, v) == Count(a, n - 1, v) + 1;
+    predicate permut{L1,L2}( int *t1 , int *t2 , integer n);
 
-     axiom CountOneMiss:
-        \forall int *a, v, integer n; n > 0 && a[n - 1] != v ==> Count(a, n, v) == Count(a, n - 1, v);
+    axiom permut_refl{L}:
+        \forall int *t, integer n; permut{L,L}(t,t,n);
+
+    axiom permut_sym{L1 ,L2} :
+        \forall int *t1 , *t2, integer n; permut{L1,L2}(t1,t2 ,n) ==> permut{L2,L1}(t2,t1 ,n) ;
+
+    axiom permut_trans{L1 ,L2 ,L3} :
+        \forall int *t1 , *t2, *t3, integer n; permut{L1,L2}(t1,t2 ,n) && permut{L2,L3}(t2 ,t3,n) ==> permut{L1,L3}(t1,t3 ,n) ;
+
+    axiom permut_exchange{L1,L2} :
+        \forall int *t1 , *t2, integer i, j, n;
+        \at (t1[i],L1) == \at (t2[j],L2) &&
+        \at (t1[j],L1) == \at (t2[i],L2) &&
+        ( \forall integer k; 0 <= k < n && k != i && k != j ==>
+        \at (t1[k],L1) == \at (t2[k],L2)) ==> permut{L1,L2}(t1 ,t2 ,n);
 
      lemma SwapImmutability{L1,L2}:
-        \forall int *a, integer n, i, j; 0 <= i < n && 0 <= j < n && Swap{L1,L2}(a, i, j, n) ==> Permutation{L1,L2}(a, n);
+        \forall int *a, int n, i, j; (0 <= i < n && 0 <= j < n && Swap{L1,L2}(a, i, j, n)) ==> permut{L1,L2}(a, a, n);
 
      lemma Validity{L1}:
-        \forall int* a, int n; (n > 0 && \forall integer k; 0 <= k < n ==> \at(\valid(a+k), L1)) ==> Permutation{L1, L1}(a, n);
-    }
+        \forall int* a, int n; (n > 0 && \forall integer k; 0 <= k < n ==> \at(\valid(a+k), L1)) ==> permut{L1, L1}(a, a, n);
+ }
 */
 
 //@ ghost int size_b = 5;
@@ -59,15 +66,15 @@
     requires \forall integer k; 0 <= k < size_a ==> a[k] < size_b;
     requires \forall integer k; 0 <= k < size_a ==> a[k] >= 0;
     requires \exists integer mx; 0 <= mx < size_a && (\forall integer k; 0 <= k < size_a ==> a[k] <= a[mx]) && \valid(b + (0..a[mx]));
-    ensures Permutation{Pre,Here}(b, size_b);
+    ensures permut{Pre,Here}(b, b, size_b);
     ensures unchanged: Unchanged{Pre,Here}(a, size_a);
  */
 void task(int a[], int b[], unsigned size_a) {
     /*@
       loop assigns i, b;
-      loop invariant bound: 0 <= i <= size_a + 1;
+      loop invariant bound: 0 <= i <= size_a;
       loop invariant i % 2 == 0;
-      loop invariant Permutation{Pre, Here}(b, size_b);
+      loop invariant permut{Pre, Here}(b, b, size_b);
       loop variant size_a - i;
    */
     for (unsigned i = 0; i < size_a; i += 2) {
@@ -76,7 +83,6 @@ void task(int a[], int b[], unsigned size_a) {
         b[a[i + 1]] = tmp;
     }
 }
-
 
 
 #ifdef OUT_OF_TASK

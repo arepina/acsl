@@ -77,70 +77,90 @@ axiomatic MaxInd {
   
 }
 
-axiomatic Cnt {
+axiomatic Permut {
 
-  logic integer _Count{L}(intP[..] a_7, integer n_7, int32 v)
+  predicate permut{L1, L2}(intP[..] t1, intP[..] t2, integer n_7)
    
-  predicate _Permutation{L1, L2}(intP[..] a_8, integer n_8) =
-  (\forall int32 v_0;
-    (_Count{L1}(a_8, n_8, v_0) == _Count{L2}(a_8, n_8, v_0)))
+  axiom permut_refl{L} :
+  (_C_5 : (\forall intP[..] t;
+            (\forall integer n_8;
+              permut{L, L}(t, t, n_8))))
    
-  axiom CountEmpty{L} :
-  (_C_5 : (\forall intP[..] a_9;
-            (\forall int32 v_1;
+  axiom permut_sym{L1, L2} :
+  (_C_6 : (\forall intP[..] t1_0;
+            (\forall intP[..] t2_0;
               (\forall integer n_9;
-                ((n_9 <= 0) ==> (_Count{L}(a_9, n_9, v_1) == 0))))))
+                (permut{L1,
+                  L2}(t1_0, t2_0, n_9) ==>
+                  permut{L2,
+                  L1}(t2_0, t1_0, n_9))))))
    
-  axiom CountOneHit{L} :
-  (_C_6 : (\forall intP[..] a_10;
-            (\forall int32 v_2;
-              (\forall integer n_10;
-                (((n_10 > 0) && ((a_10 + (n_10 - 1)).intM == v_2)) ==>
-                  (_Count{L}(a_10, n_10, v_2) ==
-                    (_Count{L}(a_10, (n_10 - 1), v_2) + 1)))))))
+  axiom permut_trans{L1, L2, L3} :
+  (_C_7 : (\forall intP[..] t1_1;
+            (\forall intP[..] t2_1;
+              (\forall intP[..] t3;
+                (\forall integer n_10;
+                  ((permut{L1,
+                     L2}(t1_1, t2_1, n_10) &&
+                     permut{L2,
+                     L3}(t2_1, t3, n_10)) ==>
+                    permut{L1,
+                    L3}(t1_1, t3, n_10)))))))
    
-  axiom CountOneMiss{L} :
-  (_C_7 : (\forall intP[..] a_11;
-            (\forall int32 v_3;
-              (\forall integer n_11;
-                (((n_11 > 0) && ((a_11 + (n_11 - 1)).intM != v_3)) ==>
-                  (_Count{L}(a_11, n_11, v_3) ==
-                    _Count{L}(a_11, (n_11 - 1), v_3)))))))
-   
-  lemma SwapImmutability{L1, L2} :
-  (_C_8 : (\forall intP[..] a_12;
-            (\forall integer n_12;
+  axiom permut_exchange{L1, L2} :
+  (_C_8 : (\forall intP[..] t1_2;
+            (\forall intP[..] t2_2;
               (\forall integer i_4;
                 (\forall integer j_1;
-                  ((((((0 <= i_4) && (i_4 < n_12)) && (0 <= j_1)) &&
-                      (j_1 < n_12)) &&
+                  (\forall integer n_11;
+                    ((((\at((t1_2 + i_4).intM,L1) ==
+                         \at((t2_2 + j_1).intM,L2)) &&
+                        (\at((t1_2 + j_1).intM,L1) ==
+                          \at((t2_2 + i_4).intM,L2))) &&
+                       (\forall integer k_2;
+                         (((((0 <= k_2) && (k_2 < n_11)) && (k_2 != i_4)) &&
+                            (k_2 != j_1)) ==>
+                           (\at((t1_2 + k_2).intM,L1) ==
+                             \at((t2_2 + k_2).intM,L2))))) ==>
+                      permut{L1,
+                      L2}(t1_2, t2_2, n_11))))))))
+   
+  lemma SwapImmutability{L1, L2} :
+  (_C_9 : (\forall intP[..] a_7;
+            (\forall int32 n_12;
+              (\forall int32 i_5;
+                (\forall int32 j_2;
+                  (((((((0 :> int32) <= i_5) && (i_5 < n_12)) &&
+                       ((0 :> int32) <= j_2)) &&
+                      (j_2 < n_12)) &&
                      _Swap{L1,
-                     L2}(a_12, i_4, j_1, n_12)) ==>
-                    _Permutation{L1,
-                    L2}(a_12, n_12)))))))
+                     L2}(a_7, (i_5 :> integer), (j_2 :> integer),
+                         (n_12 :> integer))) ==>
+                    permut{L1,
+                    L2}(a_7, a_7, (n_12 :> integer))))))))
    
   lemma Validity{L1} :
-  (_C_9 : (\forall intP[..] a_13;
-            (\forall int32 n_13;
-              (((n_13 > (0 :> int32)) &&
-                 (\forall integer k_2;
-                   (((0 <= k_2) && (k_2 < (n_13 :> integer))) ==>
-                     \at(\at((((\offset_min(\at(a_13,L1)) <= \at(k_2,L1)) &&
-                                (\offset_max(\at(a_13,L1)) >= \at(k_2,L1))) &&
-                               (\forall integer __framac_tmp1;
-                                 (((\at(k_2,L1) <= __framac_tmp1) &&
-                                    (__framac_tmp1 <= \at(k_2,L1))) ==>
-                                   true))),L1),L1)))) ==>
-                _Permutation{L1,
-                L1}(a_13, (n_13 :> integer))))))
+  (_C_10 : (\forall intP[..] a_8;
+             (\forall int32 n_13;
+               (((n_13 > (0 :> int32)) &&
+                  (\forall integer k_3;
+                    (((0 <= k_3) && (k_3 < (n_13 :> integer))) ==>
+                      \at(\at((((\offset_min(\at(a_8,L1)) <= \at(k_3,L1)) &&
+                                 (\offset_max(\at(a_8,L1)) >= \at(k_3,L1))) &&
+                                (\forall integer __framac_tmp1;
+                                  (((\at(k_3,L1) <= __framac_tmp1) &&
+                                     (__framac_tmp1 <= \at(k_3,L1))) ==>
+                                    true))),L1),L1)))) ==>
+                 permut{L1,
+                 L1}(a_8, a_8, (n_13 :> integer))))))
   
 }
 
 int32 size_b;
 
 unit task(intP[..] a, intP[..] b, uint32 size_a)
-  requires ((_C_47 : (((size_a :> integer) % 2) == 0)) &&
-             ((_C_48 : \at((if (\at(0,Here) <=
+  requires ((_C_48 : (((size_a :> integer) % 2) == 0)) &&
+             ((_C_49 : \at((if (\at(0,Here) <=
                                  \at(((size_a :> integer) - 1),Here)) then 
                            (((\offset_min(\at(a,Here)) <= \at(0,Here)) &&
                               (\offset_max(\at(a,Here)) >=
@@ -150,7 +170,7 @@ unit task(intP[..] a, intP[..] b, uint32 size_a)
                                   (__framac_tmp2 <=
                                     \at(((size_a :> integer) - 1),Here))) ==>
                                  true))) else true),Here)) &&
-               ((_C_49 : \at((if (\at(0,Here) <=
+               ((_C_50 : \at((if (\at(0,Here) <=
                                    \at(max_ind{Here}(a, size_a),Here)) then 
                              (((\offset_min(\at(b,Here)) <= \at(0,Here)) &&
                                 (\offset_max(\at(b,Here)) >=
@@ -160,18 +180,18 @@ unit task(intP[..] a, intP[..] b, uint32 size_a)
                                     (__framac_tmp3 <=
                                       \at(max_ind{Here}(a, size_a),Here))) ==>
                                    true))) else true),Here)) &&
-                 ((_C_50 : (\forall integer k_3;
-                             (((0 <= k_3) && (k_3 < (size_a :> integer))) ==>
-                               ((a + k_3).intM < size_b)))) &&
-                   ((_C_51 : (\forall integer k_4;
-                               (((0 <= k_4) && (k_4 < (size_a :> integer))) ==>
-                                 ((a + k_4).intM >= (0 :> int32))))) &&
-                     (_C_52 : (\exists integer mx;
+                 ((_C_51 : (\forall integer k_4;
+                             (((0 <= k_4) && (k_4 < (size_a :> integer))) ==>
+                               ((a + k_4).intM < size_b)))) &&
+                   ((_C_52 : (\forall integer k_5;
+                               (((0 <= k_5) && (k_5 < (size_a :> integer))) ==>
+                                 ((a + k_5).intM >= (0 :> int32))))) &&
+                     (_C_53 : (\exists integer mx;
                                 ((((0 <= mx) && (mx < (size_a :> integer))) &&
-                                   (\forall integer k_5;
-                                     (((0 <= k_5) &&
-                                        (k_5 < (size_a :> integer))) ==>
-                                       ((a + k_5).intM <= (a + mx).intM)))) &&
+                                   (\forall integer k_6;
+                                     (((0 <= k_6) &&
+                                        (k_6 < (size_a :> integer))) ==>
+                                       ((a + k_6).intM <= (a + mx).intM)))) &&
                                   \at((if (\at(0,Here) <=
                                             \at((a + mx).intM,Here)) then 
                                       (((\offset_min(\at(b,Here)) <=
@@ -184,53 +204,52 @@ unit task(intP[..] a, intP[..] b, uint32 size_a)
                                                \at((a + mx).intM,Here))) ==>
                                             true))) else true),Here)))))))));
 behavior default:
-  ensures (_C_44 : ((_C_45 : _Permutation{Old,
-                    Here}(\at(b,Old), (size_b :> integer))) &&
-                     (_C_46 : _Unchanged_0{Old,
+  ensures (_C_45 : ((_C_46 : permut{Old,
+                    Here}(\at(b,Old), \at(b,Old), (size_b :> integer))) &&
+                     (_C_47 : _Unchanged_0{Old,
                      Here}(\at(a,Old), (\at(size_a,Old) :> integer)))));
 {  
    (var uint32 i);
    
    (var int32 tmp);
    
-   {  (_C_10 : (i = (0 :> uint32)));
+   {  (_C_11 : (i = (0 :> uint32)));
       
       loop 
       behavior default:
-        invariant (_C_14 : ((_C_15 : (0 <= (i :> integer))) &&
-                             (_C_16 : ((i :> integer) <=
-                                        ((size_a :> integer) + 1)))));
+        invariant (_C_15 : ((_C_16 : (0 <= (i :> integer))) &&
+                             (_C_17 : (i <= size_a))));
       behavior default:
-        invariant (_C_13 : (((i :> integer) % 2) == 0));
+        invariant (_C_14 : (((i :> integer) % 2) == 0));
       behavior default:
-        invariant (_C_12 : _Permutation{Pre, Here}(b, (size_b :> integer)));
+        invariant (_C_13 : permut{Pre, Here}(b, b, (size_b :> integer)));
       behavior default:
         
         assigns i,
         b;
-      variant (_C_11 : ((size_a :> integer) - (i :> integer)));
+      variant (_C_12 : ((size_a :> integer) - (i :> integer)));
       while (true)
       {  
-         {  (if (_C_17 : (i < size_a)) then () else 
+         {  (if (_C_18 : (i < size_a)) then () else 
             (goto while_0_break));
             
-            {  (_C_22 : (tmp = (_C_21 : (_C_20 : (b +
-                                                   (_C_19 : (_C_18 : (a + i)).intM))).intM)));
-               (_C_33 : ((_C_32 : (_C_31 : (b +
-                                             (_C_30 : (_C_29 : (a + i)).intM))).intM) = 
-               (_C_28 : (_C_27 : (b +
-                                   (_C_26 : (_C_25 : (a +
-                                                       (_C_24 : ((_C_23 : 
+            {  (_C_23 : (tmp = (_C_22 : (_C_21 : (b +
+                                                   (_C_20 : (_C_19 : (a + i)).intM))).intM)));
+               (_C_34 : ((_C_33 : (_C_32 : (b +
+                                             (_C_31 : (_C_30 : (a + i)).intM))).intM) = 
+               (_C_29 : (_C_28 : (b +
+                                   (_C_27 : (_C_26 : (a +
+                                                       (_C_25 : ((_C_24 : 
                                                                  (i +
                                                                    (1 :> uint32))) :> uint32)))).intM))).intM)));
-               (_C_40 : ((_C_39 : (_C_38 : (b +
-                                             (_C_37 : (_C_36 : (a +
-                                                                 (_C_35 : (
-                                                                 (_C_34 : 
+               (_C_41 : ((_C_40 : (_C_39 : (b +
+                                             (_C_38 : (_C_37 : (a +
+                                                                 (_C_36 : (
+                                                                 (_C_35 : 
                                                                  (i +
                                                                    (1 :> uint32))) :> uint32)))).intM))).intM) = tmp))
             };
-            (_C_43 : (i = (_C_42 : ((_C_41 : (i + (2 :> uint32))) :> uint32))))
+            (_C_44 : (i = (_C_43 : ((_C_42 : (i + (2 :> uint32))) :> uint32))))
          }
       };
       (while_0_break : ());
