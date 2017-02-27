@@ -17,10 +17,6 @@
           ==> \at(a[k],L1) == \at(a[k],L2);
  */
 
-/*@ predicate HasValue{A}(int* b, integer n, integer k) =
-       \exists integer i; i == n && b[i] == k;
-*/
-
 /*@ axiomatic MaxInd{
  logic integer max_ind{L}(int *a, unsigned n);
 
@@ -31,16 +27,39 @@
  }
 */
 
+/*@ axiomatic Cnt {
+     logic integer Count{L}(int* a, integer n, int v);
+
+     predicate Permutation{L1,L2}(int *a, integer n) =
+        \forall int v; Count{L1}(a, n, v) == Count{L2}(a, n, v);
+
+     axiom CountEmpty:
+        \forall int *a, v, integer n;
+           n <= 0 ==> Count(a, n, v) == 0;
+          axiom CountOneHit:
+        \forall int *a, v, integer n;
+                     n > 0 && a[n - 1] == v ==> Count(a, n, v) == Count(a, n - 1, v) + 1;
+
+     axiom CountOneMiss:
+        \forall int *a, v, integer n; n > 0 && a[n - 1] != v ==> Count(a, n, v) == Count(a, n - 1, v);
+
+     lemma SwapImmutability{L1,L2}:
+        \forall int *a, integer n, i, j; 0 <= i < n && 0 <= j < n && Swap{L1,L2}(a, i, j, n) ==> Permutation{L1,L2}(a, n);
+
+     lemma Validity{L1}:
+        \forall int* a, int n; (n > 0 && \forall integer k; 0 <= k < n ==> \at(\valid(a+k), L1)) ==> Permutation{L1, L1}(a, n);
+    }
+*/
+
 //@ ghost int size_b = 5;
 /*@
     requires size_a % 2 == 0;
     requires \valid(a + (0..size_a-1));
     requires \valid(b + (0..max_ind(a, size_a)));
     requires \forall integer k; 0 <= k < size_a ==> a[k] < size_b;
-    requires \forall integer k; 0 <= k < size_a ==> HasValue(b, size_b, a[k]);
     requires \forall integer k; 0 <= k < size_a ==> a[k] >= 0;
     requires \exists integer mx; 0 <= mx < size_a && (\forall integer k; 0 <= k < size_a ==> a[k] <= a[mx]) && \valid(b + (0..a[mx]));
-    ensures unchanged: Unchanged{Pre,Here}(b, size_b);
+    ensures Permutation{Pre,Here}(b, size_b);
     ensures unchanged: Unchanged{Pre,Here}(a, size_a);
  */
 void task(int a[], int b[], unsigned size_a) {
@@ -48,14 +67,13 @@ void task(int a[], int b[], unsigned size_a) {
       loop assigns i, b;
       loop invariant bound: 0 <= i <= size_a + 1;
       loop invariant i % 2 == 0;
-      loop invariant Unchanged{Pre,Here}(b, size_b);
+      loop invariant Permutation{Pre, Here}(b, size_b);
       loop variant size_a - i;
    */
     for (unsigned i = 0; i < size_a; i += 2) {
         int tmp = b[a[i]];
         b[a[i]] = b[a[i + 1]];
         b[a[i + 1]] = tmp;
-        //@assert Swap{Pre,Here}(b,a[i],a[i+1], size_b);
     }
 }
 

@@ -1736,17 +1736,18 @@ theory Lemma_UnchangedStep
   
   lemma UnchangedStep #"/Users/anastasia/Downloads/hw/task.c" 6 8 132#
   "expl:Lemma UnchangedStep" :
-  (forall intP_intM_a_1_9_at_L : (memory intP Int32.t).
-   (forall intP_intM_a_1_9_at_K : (memory intP Int32.t).
+  (forall intP_intM_a_1_10_at_L : (memory intP Int32.t).
+   (forall intP_intM_a_1_10_at_K : (memory intP Int32.t).
     (#"/Users/anastasia/Downloads/hw/task.c" 6 8 132#
     (forall a_1_0 : (pointer intP).
      (forall n_2 : int.
       (((<=) (0) n_2) ->
-       ((_Unchanged_0 a_1_0 n_2 intP_intM_a_1_9_at_L intP_intM_a_1_9_at_K) ->
-        ((Int32.(=) (select intP_intM_a_1_9_at_K (shift a_1_0 n_2))
-         (select intP_intM_a_1_9_at_L (shift a_1_0 n_2))) ->
-         (_Unchanged_0 a_1_0 (Int.(+) n_2 (1)) intP_intM_a_1_9_at_L
-         intP_intM_a_1_9_at_K)))))))))
+       ((_Unchanged_0 a_1_0 n_2 intP_intM_a_1_10_at_L intP_intM_a_1_10_at_K)
+        ->
+        ((Int32.(=) (select intP_intM_a_1_10_at_K (shift a_1_0 n_2))
+         (select intP_intM_a_1_10_at_L (shift a_1_0 n_2))) ->
+         (_Unchanged_0 a_1_0 (Int.(+) n_2 (1)) intP_intM_a_1_10_at_L
+         intP_intM_a_1_10_at_K)))))))))
   
 end
 
@@ -1768,15 +1769,15 @@ theory Lemma_UnchangedSection
   
   lemma UnchangedSection #"/Users/anastasia/Downloads/hw/task.c" 9 8 107#
   "expl:Lemma UnchangedSection" :
-  (forall intP_intM_a_2_10_at_L : (memory intP Int32.t).
-   (forall intP_intM_a_2_10_at_K : (memory intP Int32.t).
+  (forall intP_intM_a_2_11_at_L : (memory intP Int32.t).
+   (forall intP_intM_a_2_11_at_K : (memory intP Int32.t).
     (#"/Users/anastasia/Downloads/hw/task.c" 9 8 107#
     (forall a_2 : (pointer intP).
      (forall m : int.
       (forall n_3 : int.
        ((((<=) (0) m) /\ ((<=) m n_3)) ->
-        ((_Unchanged_0 a_2 n_3 intP_intM_a_2_10_at_L intP_intM_a_2_10_at_K)
-         -> (_Unchanged_0 a_2 m intP_intM_a_2_10_at_L intP_intM_a_2_10_at_K)))))))))
+        ((_Unchanged_0 a_2 n_3 intP_intM_a_2_11_at_L intP_intM_a_2_11_at_K)
+         -> (_Unchanged_0 a_2 m intP_intM_a_2_11_at_L intP_intM_a_2_11_at_K)))))))))
   
 end
 
@@ -1799,24 +1800,160 @@ theory Axiomatic_MaxInd
   function max_ind (pointer intP) Uint32.t (memory intP Int32.t) :
   int
   
-  axiom A1 #"/Users/anastasia/Downloads/hw/task.c" 28 4 55# "expl:Axiom a1" :
-  (forall intP_intM_a_4_6_at_L : (memory intP Int32.t).
-   (#"/Users/anastasia/Downloads/hw/task.c" 28 4 55#
+  axiom A1 #"/Users/anastasia/Downloads/hw/task.c" 24 4 55# "expl:Axiom a1" :
+  (forall intP_intM_a_4_5_at_L : (memory intP Int32.t).
+   (#"/Users/anastasia/Downloads/hw/task.c" 24 4 55#
    (forall a_5 : (pointer intP).
-    (forall n_6 : Uint32.t.
-     (((<=) (0) (max_ind a_5 n_6 intP_intM_a_4_6_at_L)) /\
-     ((<=) (max_ind a_5 n_6 intP_intM_a_4_6_at_L) (Uint32.to_int n_6)))))))
+    (forall n_5 : Uint32.t.
+     (((<=) (0) (max_ind a_5 n_5 intP_intM_a_4_5_at_L)) /\
+     ((<=) (max_ind a_5 n_5 intP_intM_a_4_5_at_L) (Uint32.to_int n_5)))))))
   
-  axiom A2 #"/Users/anastasia/Downloads/hw/task.c" 30 4 81# "expl:Axiom a2" :
-  (forall intP_intM_a_4_6_at_L : (memory intP Int32.t).
-   (#"/Users/anastasia/Downloads/hw/task.c" 30 4 81#
+  axiom A2 #"/Users/anastasia/Downloads/hw/task.c" 26 4 81# "expl:Axiom a2" :
+  (forall intP_intM_a_4_5_at_L : (memory intP Int32.t).
+   (#"/Users/anastasia/Downloads/hw/task.c" 26 4 81#
    (forall a_6 : (pointer intP).
-    (forall n_7 : Uint32.t.
-     (forall i_4 : int.
-      ((((<=) (0) i_4) /\ ((<) i_4 (Uint32.to_int n_7))) ->
-       (Int32.(<=) (select intP_intM_a_4_6_at_L (shift a_6 i_4))
-       (select intP_intM_a_4_6_at_L
-       (shift a_6 (max_ind a_6 n_7 intP_intM_a_4_6_at_L))))))))))
+    (forall n_6 : Uint32.t.
+     (forall i_3 : int.
+      ((((<=) (0) i_3) /\ ((<) i_3 (Uint32.to_int n_6))) ->
+       (Int32.(<=) (select intP_intM_a_4_5_at_L (shift a_6 i_3))
+       (select intP_intM_a_4_5_at_L
+       (shift a_6 (max_ind a_6 n_6 intP_intM_a_4_5_at_L))))))))))
+  
+end
+
+theory Logic__Swap
+
+  use import Root_intP 
+  
+  use import core.Jessie_pointer 
+  
+  use import core.Jessie_memory 
+  
+  use enum.Int32 
+  
+  use import int.Int 
+  
+  use why3.Bool.Bool 
+  
+  predicate _Swap (a_3 : (pointer intP)) (i_2 : int) (j_0 : int) (size : int)
+  (intP_intM_a_3_4_at_L2 : (memory intP Int32.t)) (intP_intM_a_3_4_at_L1 :
+  (memory intP Int32.t))
+  =
+     ((Int32.(=) (select intP_intM_a_3_4_at_L1 (shift a_3 i_2))
+      (select intP_intM_a_3_4_at_L2 (shift a_3 j_0)))
+     /\
+     ((Int32.(=) (select intP_intM_a_3_4_at_L1 (shift a_3 j_0))
+      (select intP_intM_a_3_4_at_L2 (shift a_3 i_2)))
+     /\
+     (forall k_1 : int.
+      ((((<=) (0) k_1) /\
+       (((<) k_1 size) /\ (((<>) k_1 i_2) /\ ((<>) k_1 j_0)))) ->
+       (Int32.(=) (select intP_intM_a_3_4_at_L1 (shift a_3 k_1))
+       (select intP_intM_a_3_4_at_L2 (shift a_3 k_1)))))))
+  
+end
+
+theory Axiomatic_Cnt
+
+  use import Root_intP 
+  
+  use import Logic__Swap 
+  
+  use import core.Jessie_pointer 
+  
+  use import core.Jessie_memory 
+  
+  use import core.Jessie_alloc_table 
+  
+  use enum.Int32 
+  
+  use import int.Int 
+  
+  use why3.Bool.Bool 
+  
+  function _Count (pointer intP) int Int32.t (memory intP Int32.t) :
+  int
+  
+  axiom CountEmpty #"/Users/anastasia/Downloads/hw/task.c" 37 8 79#
+  "expl:Axiom CountEmpty" :
+  (forall intP_intM_a_7_6_at_L : (memory intP Int32.t).
+   (#"/Users/anastasia/Downloads/hw/task.c" 37 8 79#
+   (forall a_9 : (pointer intP).
+    (forall v_1 : Int32.t.
+     (forall n_9 : int.
+      (((<=) n_9 (0)) -> ((=) (_Count a_9 n_9 v_1 intP_intM_a_7_6_at_L) (0))))))))
+  
+  axiom CountOneHit #"/Users/anastasia/Downloads/hw/task.c" 40 8 126#
+  "expl:Axiom CountOneHit" :
+  (forall intP_intM_a_7_6_at_L : (memory intP Int32.t).
+   (#"/Users/anastasia/Downloads/hw/task.c" 40 8 126#
+   (forall a_10 : (pointer intP).
+    (forall v_2 : Int32.t.
+     (forall n_10 : int.
+      ((((>) n_10 (0)) /\
+       (Int32.(=)
+       (select intP_intM_a_7_6_at_L (shift a_10 (Int.(-) n_10 (1)))) v_2)) ->
+       ((=) (_Count a_10 n_10 v_2 intP_intM_a_7_6_at_L)
+       (Int.(+) (_Count a_10 (Int.(-) n_10 (1)) v_2 intP_intM_a_7_6_at_L)
+       (1)))))))))
+  
+  axiom CountOneMiss #"/Users/anastasia/Downloads/hw/task.c" 44 8 101#
+  "expl:Axiom CountOneMiss" :
+  (forall intP_intM_a_7_6_at_L : (memory intP Int32.t).
+   (#"/Users/anastasia/Downloads/hw/task.c" 44 8 101#
+   (forall a_11 : (pointer intP).
+    (forall v_3 : Int32.t.
+     (forall n_11 : int.
+      ((((>) n_11 (0)) /\
+       (Int32.(<>)
+       (select intP_intM_a_7_6_at_L (shift a_11 (Int.(-) n_11 (1)))) v_3)) ->
+       ((=) (_Count a_11 n_11 v_3 intP_intM_a_7_6_at_L)
+       (_Count a_11 (Int.(-) n_11 (1)) v_3 intP_intM_a_7_6_at_L))))))))
+  
+  predicate _Permutation (a_8 : (pointer intP)) (n_8 : int)
+  (intP_intM_a_7_6_at_L2 : (memory intP Int32.t)) (intP_intM_a_7_6_at_L1 :
+  (memory intP Int32.t))
+  =
+     (forall v_0 : Int32.t.
+      ((=) (_Count a_8 n_8 v_0 intP_intM_a_7_6_at_L1)
+      (_Count a_8 n_8 v_0 intP_intM_a_7_6_at_L2)))
+  
+  lemma SwapImmutability #"/Users/anastasia/Downloads/hw/task.c" 47 8 121#
+  "expl:Lemma SwapImmutability" :
+  (forall intP_intM_a_7_6_at_L2 : (memory intP Int32.t).
+   (forall intP_intM_a_7_6_at_L1 : (memory intP Int32.t).
+    (#"/Users/anastasia/Downloads/hw/task.c" 47 8 121#
+    (forall a_12 : (pointer intP).
+     (forall n_12 : int.
+      (forall i_4 : int.
+       (forall j_1 : int.
+        ((((<=) (0) i_4) /\
+         (((<) i_4 n_12) /\
+         (((<=) (0) j_1) /\
+         (((<) j_1 n_12) /\
+         (_Swap a_12 i_4 j_1 n_12 intP_intM_a_7_6_at_L2
+         intP_intM_a_7_6_at_L1))))) ->
+         (_Permutation a_12 n_12 intP_intM_a_7_6_at_L2 intP_intM_a_7_6_at_L1)))))))))
+  
+  lemma Validity #"/Users/anastasia/Downloads/hw/task.c" 50 8 126#
+  "expl:Lemma Validity" :
+  (forall intP_a_7_6_alloc_table_at_L1 : (alloc_table intP).
+   (forall intP_intM_a_7_6_at_L1 : (memory intP Int32.t).
+    (#"/Users/anastasia/Downloads/hw/task.c" 50 8 126#
+    (forall a_13 : (pointer intP).
+     (forall n_13 : Int32.t.
+      (((Int32.(>) n_13 (#"task.jc" 125 24 36# "expl:Integer cast"
+        (Int32.of_int (0))))
+       /\
+       (forall k_2 : int.
+        ((((<=) (0) k_2) /\ ((<) k_2 (Int32.to_int n_13))) ->
+         (((<=) (offset_min intP_a_7_6_alloc_table_at_L1 a_13) k_2) /\
+         (((>=) (offset_max intP_a_7_6_alloc_table_at_L1 a_13) k_2) /\
+         (forall __framac_tmp1 : int.
+          ((((<=) k_2 __framac_tmp1) /\ ((<=) __framac_tmp1 k_2)) ->
+           ((=) true true)))))))) ->
+       (_Permutation a_13 (Int32.to_int n_13) intP_intM_a_7_6_at_L1
+       intP_intM_a_7_6_at_L1)))))))
   
 end
 
@@ -1945,29 +2082,6 @@ theory Struct_intP
   
 end
 
-theory Logic__HasValue
-
-  use import Root_intP 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_memory 
-  
-  use enum.Int32 
-  
-  use import int.Int 
-  
-  use why3.Bool.Bool 
-  
-  predicate _HasValue (b : (pointer intP)) (n_4 : int) (k_2 : int)
-  (intP_intM_b_5_at_A : (memory intP Int32.t))
-  =
-     (exists i_3 : int.
-      (((=) i_3 n_4) /\
-      ((=) (Int32.to_int (select intP_intM_b_5_at_A (shift b i_3))) k_2)))
-  
-end
-
 module Exceptions
 
   use why3.Bool.Bool 
@@ -1979,38 +2093,6 @@ module Exceptions
   exception Loop_exit_exc unit
   
   exception Return_label_exc unit
-  
-end
-
-theory Logic__Swap
-
-  use import Root_intP 
-  
-  use import core.Jessie_pointer 
-  
-  use import core.Jessie_memory 
-  
-  use enum.Int32 
-  
-  use import int.Int 
-  
-  use why3.Bool.Bool 
-  
-  predicate _Swap (a_3 : (pointer intP)) (i_2 : int) (j_0 : int) (size : int)
-  (intP_intM_a_3_4_at_L2 : (memory intP Int32.t)) (intP_intM_a_3_4_at_L1 :
-  (memory intP Int32.t))
-  =
-     ((Int32.(=) (select intP_intM_a_3_4_at_L1 (shift a_3 i_2))
-      (select intP_intM_a_3_4_at_L2 (shift a_3 j_0)))
-     /\
-     ((Int32.(=) (select intP_intM_a_3_4_at_L1 (shift a_3 j_0))
-      (select intP_intM_a_3_4_at_L2 (shift a_3 i_2)))
-     /\
-     (forall k_1 : int.
-      ((((<=) (0) k_1) /\
-       (((<) k_1 size) /\ (((<>) k_1 i_2) /\ ((<>) k_1 j_0)))) ->
-       (Int32.(=) (select intP_intM_a_3_4_at_L1 (shift a_3 k_1))
-       (select intP_intM_a_3_4_at_L2 (shift a_3 k_1)))))))
   
 end
 
@@ -2027,12 +2109,6 @@ module Function_task_safety
   use import Root_intP 
   
   use import ref.Ref 
-  
-  use import Logic__Unchanged_0 
-  
-  use import Logic__Swap 
-  
-  use import Logic__HasValue 
   
   use import core.Jessie_upd_offset_safe 
   
@@ -2062,6 +2138,8 @@ module Function_task_safety
   
   use import Axiomatic_MaxInd 
   
+  use import Axiomatic_Cnt 
+  
   use why3.Bool.Bool 
   
   use import Lemma_UnchangedStep 
@@ -2070,96 +2148,89 @@ module Function_task_safety
   
   use import Globals_simple 
   
-  let task #"/Users/anastasia/Downloads/hw/task.c" 46 5 44#
+  let task #"/Users/anastasia/Downloads/hw/task.c" 65 5 44#
   "expl:Function task, safety" =
   fun
-   (a_1 : (pointer intP)) (b_0 : (pointer intP)) (size_a : Uint32.t)
-   (intP_intM_b_8 : ref (memory intP Int32.t)) (intP_a_7_alloc_table :
-   (alloc_table intP)) (intP_b_8_alloc_table : (alloc_table intP))
-   (intP_b_8_tag_table : (tag_table intP)) (intP_a_7_tag_table : (tag_table
-   intP)) (intP_intM_a_7 : (memory intP Int32.t)) 
+   (a_1 : (pointer intP)) (b : (pointer intP)) (size_a : Uint32.t)
+   (intP_intM_b_9 : ref (memory intP Int32.t)) (intP_a_8_alloc_table :
+   (alloc_table intP)) (intP_b_9_alloc_table : (alloc_table intP))
+   (intP_b_9_tag_table : (tag_table intP)) (intP_a_8_tag_table : (tag_table
+   intP)) (intP_intM_a_8 : (memory intP Int32.t)) 
    requires {
-   (((allocated intP_b_8_alloc_table b_0) ->
-     (((=) (typeof intP_b_8_tag_table b_0) intP_tag) /\
+   (((allocated intP_b_9_alloc_table b) ->
+     (((=) (typeof intP_b_9_tag_table b) intP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min intP_b_8_alloc_table b_0) i) /\
-       ((<) i (offset_max intP_b_8_alloc_table b_0))) ->
-       ((=) (typeof intP_b_8_tag_table (shift b_0 i)) intP_tag)))))
+      ((((<=) (offset_min intP_b_9_alloc_table b) i) /\
+       ((<) i (offset_max intP_b_9_alloc_table b))) ->
+       ((=) (typeof intP_b_9_tag_table (shift b i)) intP_tag)))))
    /\
-   (((allocated intP_a_7_alloc_table a_1) ->
-     (((=) (typeof intP_a_7_tag_table a_1) intP_tag) /\
+   (((allocated intP_a_8_alloc_table a_1) ->
+     (((=) (typeof intP_a_8_tag_table a_1) intP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min intP_a_7_alloc_table a_1) i) /\
-       ((<) i (offset_max intP_a_7_alloc_table a_1))) ->
-       ((=) (typeof intP_a_7_tag_table (shift a_1 i)) intP_tag)))))
+      ((((<=) (offset_min intP_a_8_alloc_table a_1) i) /\
+       ((<) i (offset_max intP_a_8_alloc_table a_1))) ->
+       ((=) (typeof intP_a_8_tag_table (shift a_1 i)) intP_tag)))))
    /\
-   (#"task.jc" 87 12 3254#
-   ((#"/Users/anastasia/Downloads/hw/task.c" 36 13 28#
+   (#"task.jc" 142 12 2925#
+   ((#"/Users/anastasia/Downloads/hw/task.c" 56 13 28#
     ((=) (ComputerDivision.mod (Uint32.to_int size_a) (2)) (0)))
    /\
-   (#"task.jc" 87 12 3254#
-   ((#"/Users/anastasia/Downloads/hw/task.c" 37 13 38#
+   (#"task.jc" 142 12 2925#
+   ((#"/Users/anastasia/Downloads/hw/task.c" 57 13 38#
     (if ((<=) (0) (Int.(-) (Uint32.to_int size_a) (1))) then
-     (((<=) (offset_min intP_a_7_alloc_table a_1) (0)) /\
-     (((>=) (offset_max intP_a_7_alloc_table a_1)
+     (((<=) (offset_min intP_a_8_alloc_table a_1) (0)) /\
+     (((>=) (offset_max intP_a_8_alloc_table a_1)
       (Int.(-) (Uint32.to_int size_a) (1)))
-     /\
-     (forall __framac_tmp1 : int.
-      ((((<=) (0) __framac_tmp1) /\
-       ((<=) __framac_tmp1 (Int.(-) (Uint32.to_int size_a) (1)))) ->
-       ((=) true true))))) else ((=) true true)))
-   /\
-   (#"task.jc" 87 12 3254#
-   ((#"/Users/anastasia/Downloads/hw/task.c" 38 13 48#
-    (if ((<=) (0) (max_ind a_1 size_a intP_intM_a_7)) then
-     (((<=) (offset_min intP_b_8_alloc_table b_0) (0)) /\
-     (((>=) (offset_max intP_b_8_alloc_table b_0)
-      (max_ind a_1 size_a intP_intM_a_7))
      /\
      (forall __framac_tmp2 : int.
       ((((<=) (0) __framac_tmp2) /\
-       ((<=) __framac_tmp2 (max_ind a_1 size_a intP_intM_a_7))) ->
+       ((<=) __framac_tmp2 (Int.(-) (Uint32.to_int size_a) (1)))) ->
        ((=) true true))))) else ((=) true true)))
    /\
-   (#"task.jc" 87 12 3254#
-   ((#"/Users/anastasia/Downloads/hw/task.c" 39 13 65#
-    (forall k_3 : int.
-     ((((<=) (0) k_3) /\ ((<) k_3 (Uint32.to_int size_a))) ->
-      (Int32.(<) (select intP_intM_a_7 (shift a_1 k_3)) size_b))))
-   /\
-   (#"task.jc" 87 12 3254#
-   ((#"/Users/anastasia/Downloads/hw/task.c" 40 13 77#
-    (forall k_4 : int.
-     ((((<=) (0) k_4) /\ ((<) k_4 (Uint32.to_int size_a))) ->
-      (_HasValue b_0 (Int32.to_int size_b)
-      (Int32.to_int (select intP_intM_a_7 (shift a_1 k_4))) !intP_intM_b_8))))
-   /\
-   (#"task.jc" 87 12 3254#
-   ((#"/Users/anastasia/Downloads/hw/task.c" 41 13 61#
-    (forall k_5 : int.
-     ((((<=) (0) k_5) /\ ((<) k_5 (Uint32.to_int size_a))) ->
-      (Int32.(>=) (select intP_intM_a_7 (shift a_1 k_5))
-      (#"task.jc" 117 54 66# "expl:Integer cast" (Int32.of_int (0)))))))
-   /\
-   (#"/Users/anastasia/Downloads/hw/task.c" 42 13 133#
-   (exists mx : int.
-    (((<=) (0) mx) /\
-    (((<) mx (Uint32.to_int size_a)) /\
-    ((forall k_6 : int.
-      ((((<=) (0) k_6) /\ ((<) k_6 (Uint32.to_int size_a))) ->
-       (Int32.(<=) (select intP_intM_a_7 (shift a_1 k_6))
-       (select intP_intM_a_7 (shift a_1 mx)))))
-    /\
-    (if ((<=) (0) (Int32.to_int (select intP_intM_a_7 (shift a_1 mx)))) then
-     (((<=) (offset_min intP_b_8_alloc_table b_0) (0)) /\
-     (((>=) (offset_max intP_b_8_alloc_table b_0)
-      (Int32.to_int (select intP_intM_a_7 (shift a_1 mx))))
+   (#"task.jc" 142 12 2925#
+   ((#"/Users/anastasia/Downloads/hw/task.c" 58 13 48#
+    (if ((<=) (0) (max_ind a_1 size_a intP_intM_a_8)) then
+     (((<=) (offset_min intP_b_9_alloc_table b) (0)) /\
+     (((>=) (offset_max intP_b_9_alloc_table b)
+      (max_ind a_1 size_a intP_intM_a_8))
      /\
      (forall __framac_tmp3 : int.
       ((((<=) (0) __framac_tmp3) /\
-       ((<=) __framac_tmp3
-       (Int32.to_int (select intP_intM_a_7 (shift a_1 mx))))) ->
-       ((=) true true))))) else ((=) true true))))))))))))))))))))) }
+       ((<=) __framac_tmp3 (max_ind a_1 size_a intP_intM_a_8))) ->
+       ((=) true true))))) else ((=) true true)))
+   /\
+   (#"task.jc" 142 12 2925#
+   ((#"/Users/anastasia/Downloads/hw/task.c" 59 13 65#
+    (forall k_3 : int.
+     ((((<=) (0) k_3) /\ ((<) k_3 (Uint32.to_int size_a))) ->
+      (Int32.(<) (select intP_intM_a_8 (shift a_1 k_3)) size_b))))
+   /\
+   (#"task.jc" 142 12 2925#
+   ((#"/Users/anastasia/Downloads/hw/task.c" 60 13 61#
+    (forall k_4 : int.
+     ((((<=) (0) k_4) /\ ((<) k_4 (Uint32.to_int size_a))) ->
+      (Int32.(>=) (select intP_intM_a_8 (shift a_1 k_4))
+      (#"task.jc" 168 52 64# "expl:Integer cast" (Int32.of_int (0)))))))
+   /\
+   (#"/Users/anastasia/Downloads/hw/task.c" 61 13 133#
+   (exists mx : int.
+    (((<=) (0) mx) /\
+    (((<) mx (Uint32.to_int size_a)) /\
+    ((forall k_5 : int.
+      ((((<=) (0) k_5) /\ ((<) k_5 (Uint32.to_int size_a))) ->
+       (Int32.(<=) (select intP_intM_a_8 (shift a_1 k_5))
+       (select intP_intM_a_8 (shift a_1 mx)))))
+    /\
+    (if ((<=) (0) (Int32.to_int (select intP_intM_a_8 (shift a_1 mx)))) then
+     (((<=) (offset_min intP_b_9_alloc_table b) (0)) /\
+     (((>=) (offset_max intP_b_9_alloc_table b)
+      (Int32.to_int (select intP_intM_a_8 (shift a_1 mx))))
+     /\
+     (forall __framac_tmp4 : int.
+      ((((<=) (0) __framac_tmp4) /\
+       ((<=) __framac_tmp4
+       (Int32.to_int (select intP_intM_a_8 (shift a_1 mx))))) ->
+       ((=) true true))))) else ((=) true true))))))))))))))))))) }
    ensures { ("expl:Postcondition" true) }  ->
    'Init:
    try
@@ -2170,130 +2241,116 @@ module Function_task_safety
      begin
      (i :=
       (let _jessie_17 =
-      (#"task.jc" 145 19 32# "expl:Integer cast" (Safe_uint32.of_int (0))) in
+      (#"task.jc" 196 20 33# "expl:Integer cast" (Safe_uint32.of_int (0))) in
       begin
       (assert {
-      (#"/Users/anastasia/Downloads/hw/task.c" 54 9 17#
+      (#"/Users/anastasia/Downloads/hw/task.c" 73 9 17#
       "expl:Pointer index bounds" true) }); _jessie_17 end));
       'Loop_2:
       loop
-      invariant { (#"task.jc" 147 6 2400# true) }
-        variant { (#"/Users/anastasia/Downloads/hw/task.c" 52 19 29#
+      invariant { (#"task.jc" 198 6 1876# true) }
+        variant { (#"/Users/anastasia/Downloads/hw/task.c" 71 19 29#
           (Int.(-) (Uint32.to_int size_a) (Uint32.to_int !i))) }
        begin
        any unit
-       requires { true } reads { b_0, intP_intM_b_8, size_a, size_b }
+       requires { true } reads { b, intP_intM_b_9, size_a, size_b }
        ensures {
-         ((#"/Users/anastasia/Downloads/hw/task.c" 51 21 51#
-          (_Unchanged_0 b_0 (Int32.to_int size_b) !intP_intM_b_8 (at
-          !intP_intM_b_8 'Init)))
+         ((#"/Users/anastasia/Downloads/hw/task.c" 70 21 54#
+          (_Permutation b (Int32.to_int size_b) !intP_intM_b_9 (at
+          !intP_intM_b_9 'Init)))
          /\
-         ((#"/Users/anastasia/Downloads/hw/task.c" 50 21 31#
+         ((#"/Users/anastasia/Downloads/hw/task.c" 69 21 31#
           ((=) (ComputerDivision.mod (Uint32.to_int !i) (2)) (0)))
          /\
-         (#"/Users/anastasia/Downloads/hw/task.c" 49 28 48#
-         (#"/Users/anastasia/Downloads/hw/task.c" 49 28 48#
-         ((#"/Users/anastasia/Downloads/hw/task.c" 49 28 34#
+         (#"/Users/anastasia/Downloads/hw/task.c" 68 28 48#
+         (#"/Users/anastasia/Downloads/hw/task.c" 68 28 48#
+         ((#"/Users/anastasia/Downloads/hw/task.c" 68 28 34#
           ((<=) (0) (Uint32.to_int !i)))
          /\
-         (#"/Users/anastasia/Downloads/hw/task.c" 49 33 48#
+         (#"/Users/anastasia/Downloads/hw/task.c" 68 33 48#
          ((<=) (Uint32.to_int !i) (Int.(+) (Uint32.to_int size_a) (1)))))))))
          } ;
         try
          begin
          begin
          (if
-         (#"/Users/anastasia/Downloads/hw/task.c" 54 25 35#
+         (#"/Users/anastasia/Downloads/hw/task.c" 73 25 35#
          (Safe_uint32.(<)  !i size_a )) then ()
          else (raise (Goto_while_0_break_exc ())));
           begin
           (tmp :=
            (let _jessie_18 =
-           (#"/Users/anastasia/Downloads/hw/task.c" 55 18 25#
+           (#"/Users/anastasia/Downloads/hw/task.c" 74 18 25#
            "expl:Pointer dereference"
-           (acc_offset_typesafe  intP_b_8_alloc_table !intP_intM_b_8 b_0
+           (acc_offset_typesafe  intP_b_9_alloc_table !intP_intM_b_9 b
             (Safe_int32.to_int 
-             (#"/Users/anastasia/Downloads/hw/task.c" 55 20 24#
+             (#"/Users/anastasia/Downloads/hw/task.c" 74 20 24#
              "expl:Pointer dereference"
-             (acc_offset_typesafe  intP_a_7_alloc_table intP_intM_a_7 a_1
+             (acc_offset_typesafe  intP_a_8_alloc_table intP_intM_a_8 a_1
               (Safe_uint32.to_int  !i ) )) ) )) in
            begin
            (assert {
-           (#"/Users/anastasia/Downloads/hw/task.c" 55 8 11#
+           (#"/Users/anastasia/Downloads/hw/task.c" 74 8 11#
            "expl:Pointer index bounds" true) }); _jessie_18 end));
            begin
            (let _jessie_20 =
            (let _jessie_19 =
-           (#"/Users/anastasia/Downloads/hw/task.c" 56 18 29#
+           (#"/Users/anastasia/Downloads/hw/task.c" 75 18 29#
            "expl:Pointer dereference"
-           (acc_offset_typesafe  intP_b_8_alloc_table !intP_intM_b_8 b_0
+           (acc_offset_typesafe  intP_b_9_alloc_table !intP_intM_b_9 b
             (Safe_int32.to_int 
-             (#"/Users/anastasia/Downloads/hw/task.c" 56 20 28#
+             (#"/Users/anastasia/Downloads/hw/task.c" 75 20 28#
              "expl:Pointer dereference"
-             (acc_offset_typesafe  intP_a_7_alloc_table intP_intM_a_7 a_1
+             (acc_offset_typesafe  intP_a_8_alloc_table intP_intM_a_8 a_1
               (Safe_uint32.to_int 
                (Safe_uint32.(+)  !i
-                (#"task.jc" 174 67 80# "expl:Integer cast"
+                (#"task.jc" 225 67 80# "expl:Integer cast"
                 (Safe_uint32.of_int (1))) ) ) )) ) )) in
            begin
            (assert {
-           (#"/Users/anastasia/Downloads/hw/task.c" 56 8 29#
+           (#"/Users/anastasia/Downloads/hw/task.c" 75 8 29#
            "expl:Pointer index bounds" true) }); _jessie_19 end) in
-           (let _jessie_21 = b_0 in
+           (let _jessie_21 = b in
            (let _jessie_22 =
            (Safe_int32.to_int 
-            (#"/Users/anastasia/Downloads/hw/task.c" 56 10 14#
+            (#"/Users/anastasia/Downloads/hw/task.c" 75 10 14#
             "expl:Pointer dereference"
-            (acc_offset_typesafe  intP_a_7_alloc_table intP_intM_a_7 a_1
+            (acc_offset_typesafe  intP_a_8_alloc_table intP_intM_a_8 a_1
              (Safe_uint32.to_int  !i ) )) ) in
            (let _jessie_23 = (shift_typesafe  _jessie_21 _jessie_22 ) in
-           (#"/Users/anastasia/Downloads/hw/task.c" 56 8 29#
+           (#"/Users/anastasia/Downloads/hw/task.c" 75 8 29#
            "expl:Pointer dereference"
-           (upd_offset_typesafe  intP_b_8_alloc_table intP_intM_b_8
+           (upd_offset_typesafe  intP_b_9_alloc_table intP_intM_b_9
             _jessie_21 _jessie_22 _jessie_20 ))))));
-            begin
             (let _jessie_25 =
             (let _jessie_24 = !tmp in
             begin
             (assert {
-            (#"/Users/anastasia/Downloads/hw/task.c" 57 8 25#
+            (#"/Users/anastasia/Downloads/hw/task.c" 76 8 25#
             "expl:Pointer index bounds" true) }); _jessie_24 end) in
-            (let _jessie_26 = b_0 in
+            (let _jessie_26 = b in
             (let _jessie_27 =
             (Safe_int32.to_int 
-             (#"/Users/anastasia/Downloads/hw/task.c" 57 10 18#
+             (#"/Users/anastasia/Downloads/hw/task.c" 76 10 18#
              "expl:Pointer dereference"
-             (acc_offset_typesafe  intP_a_7_alloc_table intP_intM_a_7 a_1
+             (acc_offset_typesafe  intP_a_8_alloc_table intP_intM_a_8 a_1
               (Safe_uint32.to_int 
                (Safe_uint32.(+)  !i
-                (#"task.jc" 180 67 80# "expl:Integer cast"
+                (#"task.jc" 231 67 80# "expl:Integer cast"
                 (Safe_uint32.of_int (1))) ) ) )) ) in
             (let _jessie_28 = (shift_typesafe  _jessie_26 _jessie_27 ) in
-            (#"/Users/anastasia/Downloads/hw/task.c" 57 8 25#
+            (#"/Users/anastasia/Downloads/hw/task.c" 76 8 25#
             "expl:Pointer dereference"
-            (upd_offset_typesafe  intP_b_8_alloc_table intP_intM_b_8
-             _jessie_26 _jessie_27 _jessie_25 ))))));
-             begin
-             any unit
-             requires { true } reads { a_1, b_0, intP_intM_b_8, size_b }
-             ensures {
-               (#"/Users/anastasia/Downloads/hw/task.c" 58 8 45#
-               (_Swap b_0
-               (Int32.to_int
-               (select intP_intM_a_7 (shift a_1 (Uint32.to_int !i))))
-               (Int32.to_int
-               (select intP_intM_a_7
-               (shift a_1 (Int.(+) (Uint32.to_int !i) (1)))))
-               (Int32.to_int size_b) !intP_intM_b_8 (at !intP_intM_b_8
-               'Init))) } ; () end end end end;
+            (upd_offset_typesafe  intP_b_9_alloc_table intP_intM_b_9
+             _jessie_26 _jessie_27 _jessie_25 )))))) end end;
           (i :=
            (let _jessie_29 =
            (Safe_uint32.(+)  !i
-            (#"task.jc" 192 50 63# "expl:Integer cast"
+            (#"task.jc" 233 50 63# "expl:Integer cast"
             (Safe_uint32.of_int (2))) ) in
            begin
            (assert {
-           (#"/Users/anastasia/Downloads/hw/task.c" 54 37 43#
+           (#"/Users/anastasia/Downloads/hw/task.c" 73 37 43#
            "expl:Pointer index bounds" true) }); _jessie_29 end)) end;
           (raise (Loop_continue_exc ())) end with Loop_continue_exc _jessie_3
          -> () end end end; (raise (Goto_while_0_break_exc ())) end with
@@ -2318,10 +2375,6 @@ module Function_task_behaviors
   use import ref.Ref 
   
   use import Logic__Unchanged_0 
-  
-  use import Logic__Swap 
-  
-  use import Logic__HasValue 
   
   use import core.Jessie_upd_unsafe 
   
@@ -2355,6 +2408,8 @@ module Function_task_behaviors
   
   use import Axiomatic_MaxInd 
   
+  use import Axiomatic_Cnt 
+  
   use why3.Bool.Bool 
   
   use import Lemma_UnchangedStep 
@@ -2363,107 +2418,100 @@ module Function_task_behaviors
   
   use import Globals_simple 
   
-  let task_ensures_default #"/Users/anastasia/Downloads/hw/task.c" 46 5 44#
+  let task_ensures_default #"/Users/anastasia/Downloads/hw/task.c" 65 5 44#
   "expl:Function task, default behavior" =
   fun
-   (a_1 : (pointer intP)) (b_0 : (pointer intP)) (size_a : Uint32.t)
-   (intP_intM_b_8 : ref (memory intP Int32.t)) (intP_a_7_alloc_table :
-   (alloc_table intP)) (intP_b_8_alloc_table : (alloc_table intP))
-   (intP_b_8_tag_table : (tag_table intP)) (intP_a_7_tag_table : (tag_table
-   intP)) (intP_intM_a_7 : (memory intP Int32.t)) 
+   (a_1 : (pointer intP)) (b : (pointer intP)) (size_a : Uint32.t)
+   (intP_intM_b_9 : ref (memory intP Int32.t)) (intP_a_8_alloc_table :
+   (alloc_table intP)) (intP_b_9_alloc_table : (alloc_table intP))
+   (intP_b_9_tag_table : (tag_table intP)) (intP_a_8_tag_table : (tag_table
+   intP)) (intP_intM_a_8 : (memory intP Int32.t)) 
    requires {
-   (((allocated intP_b_8_alloc_table b_0) ->
-     (((=) (typeof intP_b_8_tag_table b_0) intP_tag) /\
+   (((allocated intP_b_9_alloc_table b) ->
+     (((=) (typeof intP_b_9_tag_table b) intP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min intP_b_8_alloc_table b_0) i) /\
-       ((<) i (offset_max intP_b_8_alloc_table b_0))) ->
-       ((=) (typeof intP_b_8_tag_table (shift b_0 i)) intP_tag)))))
+      ((((<=) (offset_min intP_b_9_alloc_table b) i) /\
+       ((<) i (offset_max intP_b_9_alloc_table b))) ->
+       ((=) (typeof intP_b_9_tag_table (shift b i)) intP_tag)))))
    /\
-   (((allocated intP_a_7_alloc_table a_1) ->
-     (((=) (typeof intP_a_7_tag_table a_1) intP_tag) /\
+   (((allocated intP_a_8_alloc_table a_1) ->
+     (((=) (typeof intP_a_8_tag_table a_1) intP_tag) /\
      (forall i : int.
-      ((((<=) (offset_min intP_a_7_alloc_table a_1) i) /\
-       ((<) i (offset_max intP_a_7_alloc_table a_1))) ->
-       ((=) (typeof intP_a_7_tag_table (shift a_1 i)) intP_tag)))))
+      ((((<=) (offset_min intP_a_8_alloc_table a_1) i) /\
+       ((<) i (offset_max intP_a_8_alloc_table a_1))) ->
+       ((=) (typeof intP_a_8_tag_table (shift a_1 i)) intP_tag)))))
    /\
-   (#"task.jc" 87 12 3254#
-   ((#"/Users/anastasia/Downloads/hw/task.c" 36 13 28#
+   (#"task.jc" 142 12 2925#
+   ((#"/Users/anastasia/Downloads/hw/task.c" 56 13 28#
     ((=) (ComputerDivision.mod (Uint32.to_int size_a) (2)) (0)))
    /\
-   (#"task.jc" 87 12 3254#
-   ((#"/Users/anastasia/Downloads/hw/task.c" 37 13 38#
+   (#"task.jc" 142 12 2925#
+   ((#"/Users/anastasia/Downloads/hw/task.c" 57 13 38#
     (if ((<=) (0) (Int.(-) (Uint32.to_int size_a) (1))) then
-     (((<=) (offset_min intP_a_7_alloc_table a_1) (0)) /\
-     (((>=) (offset_max intP_a_7_alloc_table a_1)
+     (((<=) (offset_min intP_a_8_alloc_table a_1) (0)) /\
+     (((>=) (offset_max intP_a_8_alloc_table a_1)
       (Int.(-) (Uint32.to_int size_a) (1)))
-     /\
-     (forall __framac_tmp1 : int.
-      ((((<=) (0) __framac_tmp1) /\
-       ((<=) __framac_tmp1 (Int.(-) (Uint32.to_int size_a) (1)))) ->
-       ((=) true true))))) else ((=) true true)))
-   /\
-   (#"task.jc" 87 12 3254#
-   ((#"/Users/anastasia/Downloads/hw/task.c" 38 13 48#
-    (if ((<=) (0) (max_ind a_1 size_a intP_intM_a_7)) then
-     (((<=) (offset_min intP_b_8_alloc_table b_0) (0)) /\
-     (((>=) (offset_max intP_b_8_alloc_table b_0)
-      (max_ind a_1 size_a intP_intM_a_7))
      /\
      (forall __framac_tmp2 : int.
       ((((<=) (0) __framac_tmp2) /\
-       ((<=) __framac_tmp2 (max_ind a_1 size_a intP_intM_a_7))) ->
+       ((<=) __framac_tmp2 (Int.(-) (Uint32.to_int size_a) (1)))) ->
        ((=) true true))))) else ((=) true true)))
    /\
-   (#"task.jc" 87 12 3254#
-   ((#"/Users/anastasia/Downloads/hw/task.c" 39 13 65#
-    (forall k_3 : int.
-     ((((<=) (0) k_3) /\ ((<) k_3 (Uint32.to_int size_a))) ->
-      (Int32.(<) (select intP_intM_a_7 (shift a_1 k_3)) size_b))))
-   /\
-   (#"task.jc" 87 12 3254#
-   ((#"/Users/anastasia/Downloads/hw/task.c" 40 13 77#
-    (forall k_4 : int.
-     ((((<=) (0) k_4) /\ ((<) k_4 (Uint32.to_int size_a))) ->
-      (_HasValue b_0 (Int32.to_int size_b)
-      (Int32.to_int (select intP_intM_a_7 (shift a_1 k_4))) !intP_intM_b_8))))
-   /\
-   (#"task.jc" 87 12 3254#
-   ((#"/Users/anastasia/Downloads/hw/task.c" 41 13 61#
-    (forall k_5 : int.
-     ((((<=) (0) k_5) /\ ((<) k_5 (Uint32.to_int size_a))) ->
-      (Int32.(>=) (select intP_intM_a_7 (shift a_1 k_5))
-      (#"task.jc" 117 54 66# "expl:Integer cast" (Int32.of_int (0)))))))
-   /\
-   (#"/Users/anastasia/Downloads/hw/task.c" 42 13 133#
-   (exists mx : int.
-    (((<=) (0) mx) /\
-    (((<) mx (Uint32.to_int size_a)) /\
-    ((forall k_6 : int.
-      ((((<=) (0) k_6) /\ ((<) k_6 (Uint32.to_int size_a))) ->
-       (Int32.(<=) (select intP_intM_a_7 (shift a_1 k_6))
-       (select intP_intM_a_7 (shift a_1 mx)))))
-    /\
-    (if ((<=) (0) (Int32.to_int (select intP_intM_a_7 (shift a_1 mx)))) then
-     (((<=) (offset_min intP_b_8_alloc_table b_0) (0)) /\
-     (((>=) (offset_max intP_b_8_alloc_table b_0)
-      (Int32.to_int (select intP_intM_a_7 (shift a_1 mx))))
+   (#"task.jc" 142 12 2925#
+   ((#"/Users/anastasia/Downloads/hw/task.c" 58 13 48#
+    (if ((<=) (0) (max_ind a_1 size_a intP_intM_a_8)) then
+     (((<=) (offset_min intP_b_9_alloc_table b) (0)) /\
+     (((>=) (offset_max intP_b_9_alloc_table b)
+      (max_ind a_1 size_a intP_intM_a_8))
      /\
      (forall __framac_tmp3 : int.
       ((((<=) (0) __framac_tmp3) /\
-       ((<=) __framac_tmp3
-       (Int32.to_int (select intP_intM_a_7 (shift a_1 mx))))) ->
-       ((=) true true))))) else ((=) true true))))))))))))))))))))) }
+       ((<=) __framac_tmp3 (max_ind a_1 size_a intP_intM_a_8))) ->
+       ((=) true true))))) else ((=) true true)))
+   /\
+   (#"task.jc" 142 12 2925#
+   ((#"/Users/anastasia/Downloads/hw/task.c" 59 13 65#
+    (forall k_3 : int.
+     ((((<=) (0) k_3) /\ ((<) k_3 (Uint32.to_int size_a))) ->
+      (Int32.(<) (select intP_intM_a_8 (shift a_1 k_3)) size_b))))
+   /\
+   (#"task.jc" 142 12 2925#
+   ((#"/Users/anastasia/Downloads/hw/task.c" 60 13 61#
+    (forall k_4 : int.
+     ((((<=) (0) k_4) /\ ((<) k_4 (Uint32.to_int size_a))) ->
+      (Int32.(>=) (select intP_intM_a_8 (shift a_1 k_4))
+      (#"task.jc" 168 52 64# "expl:Integer cast" (Int32.of_int (0)))))))
+   /\
+   (#"/Users/anastasia/Downloads/hw/task.c" 61 13 133#
+   (exists mx : int.
+    (((<=) (0) mx) /\
+    (((<) mx (Uint32.to_int size_a)) /\
+    ((forall k_5 : int.
+      ((((<=) (0) k_5) /\ ((<) k_5 (Uint32.to_int size_a))) ->
+       (Int32.(<=) (select intP_intM_a_8 (shift a_1 k_5))
+       (select intP_intM_a_8 (shift a_1 mx)))))
+    /\
+    (if ((<=) (0) (Int32.to_int (select intP_intM_a_8 (shift a_1 mx)))) then
+     (((<=) (offset_min intP_b_9_alloc_table b) (0)) /\
+     (((>=) (offset_max intP_b_9_alloc_table b)
+      (Int32.to_int (select intP_intM_a_8 (shift a_1 mx))))
+     /\
+     (forall __framac_tmp4 : int.
+      ((((<=) (0) __framac_tmp4) /\
+       ((<=) __framac_tmp4
+       (Int32.to_int (select intP_intM_a_8 (shift a_1 mx))))) ->
+       ((=) true true))))) else ((=) true true))))))))))))))))))) }
    ensures {
      ("expl:Postcondition"
-     (#"/Users/anastasia/Downloads/hw/task.c" 43 23 53# "expl:Ensures clause"
-     (#"/Users/anastasia/Downloads/hw/task.c" 43 23 53# "expl:Ensures clause"
-     ((#"/Users/anastasia/Downloads/hw/task.c" 43 23 53#
+     (#"/Users/anastasia/Downloads/hw/task.c" 62 12 44# "expl:Ensures clause"
+     (#"/Users/anastasia/Downloads/hw/task.c" 62 12 44# "expl:Ensures clause"
+     ((#"/Users/anastasia/Downloads/hw/task.c" 62 12 44#
       "expl:Ensures clause"
-      (_Unchanged_0 b_0 (Int32.to_int size_b) !intP_intM_b_8 (old
-      !intP_intM_b_8)))
+      (_Permutation b (Int32.to_int size_b) !intP_intM_b_9 (old
+      !intP_intM_b_9)))
      /\
-     (#"/Users/anastasia/Downloads/hw/task.c" 44 23 53# "expl:Ensures clause"
-     (_Unchanged_0 a_1 (Uint32.to_int size_a) intP_intM_a_7 intP_intM_a_7))))))
+     (#"/Users/anastasia/Downloads/hw/task.c" 63 23 53# "expl:Ensures clause"
+     (_Unchanged_0 a_1 (Uint32.to_int size_a) intP_intM_a_8 intP_intM_a_8))))))
      } diverges  ->
    'Init:
    try
@@ -2473,90 +2521,77 @@ module Function_task_behaviors
     try
      begin
      (i :=
-      (#"task.jc" 145 19 32# "expl:Integer cast" (Unsafe_uint32.of_int (0))));
+      (#"task.jc" 196 20 33# "expl:Integer cast" (Unsafe_uint32.of_int (0))));
       'Loop_1:
       loop
       invariant
-        { (((#"/Users/anastasia/Downloads/hw/task.c" 49 28 48#
-            (#"/Users/anastasia/Downloads/hw/task.c" 49 28 48#
-            ((#"/Users/anastasia/Downloads/hw/task.c" 49 28 34#
+        { (((#"/Users/anastasia/Downloads/hw/task.c" 68 28 48#
+            (#"/Users/anastasia/Downloads/hw/task.c" 68 28 48#
+            ((#"/Users/anastasia/Downloads/hw/task.c" 68 28 34#
              ((<=) (0) (Uint32.to_int !i)))
             /\
-            (#"/Users/anastasia/Downloads/hw/task.c" 49 33 48#
+            (#"/Users/anastasia/Downloads/hw/task.c" 68 33 48#
             ((<=) (Uint32.to_int !i) (Int.(+) (Uint32.to_int size_a) (1)))))))
            &&
-           ((#"/Users/anastasia/Downloads/hw/task.c" 50 21 31#
+           ((#"/Users/anastasia/Downloads/hw/task.c" 69 21 31#
             ((=) (ComputerDivision.mod (Uint32.to_int !i) (2)) (0)))
            &&
-           (#"/Users/anastasia/Downloads/hw/task.c" 51 21 51#
-           (_Unchanged_0 b_0 (Int32.to_int size_b) !intP_intM_b_8 (at
-           !intP_intM_b_8 'Init)))))
+           (#"/Users/anastasia/Downloads/hw/task.c" 70 21 54#
+           (_Permutation b (Int32.to_int size_b) !intP_intM_b_9 (at
+           !intP_intM_b_9 'Init)))))
           /\
-          (#"task.jc" 147 6 2400# "expl:Assigns clause"
-          (not_assigns intP_b_8_alloc_table intP_b_8_alloc_table (at
-          !intP_intM_b_8 'Loop_1) !intP_intM_b_8 pset_empty))) } 
+          (#"task.jc" 198 6 1876# "expl:Assigns clause"
+          (not_assigns intP_b_9_alloc_table intP_b_9_alloc_table (at
+          !intP_intM_b_9 'Loop_1) !intP_intM_b_9 pset_empty))) } 
        begin
        any unit requires { true } ensures { true } ;
         try
          begin
          begin
          (if
-         (#"/Users/anastasia/Downloads/hw/task.c" 54 25 35#
+         (#"/Users/anastasia/Downloads/hw/task.c" 73 25 35#
          (Unsafe_uint32.(<)  !i size_a )) then ()
          else (raise (Goto_while_0_break_exc ())));
           begin
           (tmp :=
-           (acc  !intP_intM_b_8
-            (shift_  b_0
+           (acc  !intP_intM_b_9
+            (shift_  b
              (Unsafe_int32.to_int 
-              (acc  intP_intM_a_7 (shift_  a_1 (Unsafe_uint32.to_int  !i ) )
+              (acc  intP_intM_a_8 (shift_  a_1 (Unsafe_uint32.to_int  !i ) )
                ) ) ) ));
            begin
            (let _jessie_7 =
-           (acc  !intP_intM_b_8
-            (shift_  b_0
+           (acc  !intP_intM_b_9
+            (shift_  b
              (Unsafe_int32.to_int 
-              (acc  intP_intM_a_7
+              (acc  intP_intM_a_8
                (shift_  a_1
                 (Unsafe_uint32.to_int 
                  (Unsafe_uint32.(+)  !i
-                  (#"task.jc" 174 67 80# "expl:Integer cast"
+                  (#"task.jc" 225 67 80# "expl:Integer cast"
                   (Unsafe_uint32.of_int (1))) ) ) ) ) ) ) ) in
-           (let _jessie_8 = b_0 in
+           (let _jessie_8 = b in
            (let _jessie_9 =
            (Unsafe_int32.to_int 
-            (acc  intP_intM_a_7 (shift_  a_1 (Unsafe_uint32.to_int  !i ) ) )
+            (acc  intP_intM_a_8 (shift_  a_1 (Unsafe_uint32.to_int  !i ) ) )
             ) in
            (let _jessie_10 = (shift_  _jessie_8 _jessie_9 ) in
-           (upd  intP_intM_b_8 _jessie_10 _jessie_7 )))));
-            begin
+           (upd  intP_intM_b_9 _jessie_10 _jessie_7 )))));
             (let _jessie_12 = !tmp in
-            (let _jessie_13 = b_0 in
+            (let _jessie_13 = b in
             (let _jessie_14 =
             (Unsafe_int32.to_int 
-             (acc  intP_intM_a_7
+             (acc  intP_intM_a_8
               (shift_  a_1
                (Unsafe_uint32.to_int 
                 (Unsafe_uint32.(+)  !i
-                 (#"task.jc" 180 67 80# "expl:Integer cast"
+                 (#"task.jc" 231 67 80# "expl:Integer cast"
                  (Unsafe_uint32.of_int (1))) ) ) ) ) ) in
             (let _jessie_15 = (shift_  _jessie_13 _jessie_14 ) in
-            (upd  intP_intM_b_8 _jessie_15 _jessie_12 )))));
-             begin
-             (assert {
-             (#"/Users/anastasia/Downloads/hw/task.c" 58 8 45#
-             "expl:Assertion in line 58"
-             (_Swap b_0
-             (Int32.to_int
-             (select intP_intM_a_7 (shift a_1 (Uint32.to_int !i))))
-             (Int32.to_int
-             (select intP_intM_a_7
-             (shift a_1 (Int.(+) (Uint32.to_int !i) (1)))))
-             (Int32.to_int size_b) !intP_intM_b_8 (at !intP_intM_b_8 'Init)))
-             }); () end end end end;
+            (upd  intP_intM_b_9 _jessie_15 _jessie_12 ))))) end end;
           (i :=
            (Unsafe_uint32.(+)  !i
-            (#"task.jc" 192 50 63# "expl:Integer cast"
+            (#"task.jc" 233 50 63# "expl:Integer cast"
             (Unsafe_uint32.of_int (2))) )) end;
           (raise (Loop_continue_exc ())) end with Loop_continue_exc _jessie_3
          -> () end end end; (raise (Goto_while_0_break_exc ())) end with
@@ -8303,6 +8338,8 @@ module Function_task
   
   use enum.Int32 
   
+  use import Axiomatic_Cnt 
+  
   use why3.Bool.Bool 
   
   use import Lemma_UnchangedStep 
@@ -8313,30 +8350,30 @@ module Function_task
   
   val task
   (a_1 : (pointer intP)) 
-   (b_0 : (pointer intP)) 
+   (b : (pointer intP)) 
     (size_a : Uint32.t) 
-     (intP_intM_b_8 : ref (memory intP Int32.t)) 
-      (intP_b_8_alloc_table : (alloc_table intP)) 
-       (intP_a_7_alloc_table : (alloc_table intP)) 
-        (intP_b_8_tag_table : (tag_table intP)) 
-         (intP_a_7_tag_table : (tag_table intP)) 
-          (intP_intM_a_7 : (memory intP Int32.t)) : unit
-           requires { true } reads { intP_intM_b_8, size_b } writes {
-           intP_intM_b_8 }
+     (intP_intM_b_9 : ref (memory intP Int32.t)) 
+      (intP_b_9_alloc_table : (alloc_table intP)) 
+       (intP_a_8_alloc_table : (alloc_table intP)) 
+        (intP_b_9_tag_table : (tag_table intP)) 
+         (intP_a_8_tag_table : (tag_table intP)) 
+          (intP_intM_a_8 : (memory intP Int32.t)) : unit
+           requires { true } reads { intP_intM_b_9, size_b } writes {
+           intP_intM_b_9 }
            ensures {
-             (#"/Users/anastasia/Downloads/hw/task.c" 43 23 53#
+             (#"/Users/anastasia/Downloads/hw/task.c" 62 12 44#
              "expl:Ensures clause"
-             (#"/Users/anastasia/Downloads/hw/task.c" 43 23 53#
+             (#"/Users/anastasia/Downloads/hw/task.c" 62 12 44#
              "expl:Ensures clause"
-             ((#"/Users/anastasia/Downloads/hw/task.c" 43 23 53#
+             ((#"/Users/anastasia/Downloads/hw/task.c" 62 12 44#
               "expl:Ensures clause"
-              (_Unchanged_0 b_0 (Int32.to_int size_b) !intP_intM_b_8 (old
-              !intP_intM_b_8)))
+              (_Permutation b (Int32.to_int size_b) !intP_intM_b_9 (old
+              !intP_intM_b_9)))
              /\
-             (#"/Users/anastasia/Downloads/hw/task.c" 44 23 53#
+             (#"/Users/anastasia/Downloads/hw/task.c" 63 23 53#
              "expl:Ensures clause"
-             (_Unchanged_0 a_1 (Uint32.to_int size_a) intP_intM_a_7
-             intP_intM_a_7))))) }
+             (_Unchanged_0 a_1 (Uint32.to_int size_a) intP_intM_a_8
+             intP_intM_a_8))))) }
   
 end
 
@@ -8349,8 +8386,6 @@ module Function_task_safe
   use import ref.Ref 
   
   use import Logic__Unchanged_0 
-  
-  use import Logic__HasValue 
   
   use import core.Jessie_tag_table_type 
   
@@ -8368,6 +8403,8 @@ module Function_task_safe
   
   use import Axiomatic_MaxInd 
   
+  use import Axiomatic_Cnt 
+  
   use why3.Bool.Bool 
   
   use import Lemma_UnchangedStep 
@@ -8378,109 +8415,99 @@ module Function_task_safe
   
   val task
   (a_1 : (pointer intP)) 
-   (b_0 : (pointer intP)) 
+   (b : (pointer intP)) 
     (size_a : Uint32.t) 
-     (intP_intM_b_8 : ref (memory intP Int32.t)) 
-      (intP_b_8_alloc_table : (alloc_table intP)) 
-       (intP_a_7_alloc_table : (alloc_table intP)) 
-        (intP_b_8_tag_table : (tag_table intP)) 
-         (intP_a_7_tag_table : (tag_table intP)) 
-          (intP_intM_a_7 : (memory intP Int32.t)) : unit
+     (intP_intM_b_9 : ref (memory intP Int32.t)) 
+      (intP_b_9_alloc_table : (alloc_table intP)) 
+       (intP_a_8_alloc_table : (alloc_table intP)) 
+        (intP_b_9_tag_table : (tag_table intP)) 
+         (intP_a_8_tag_table : (tag_table intP)) 
+          (intP_intM_a_8 : (memory intP Int32.t)) : unit
            requires {
              ("expl:Internal"
-             (#"task.jc" 87 12 3254# "expl:Requires clause"
-             ((#"/Users/anastasia/Downloads/hw/task.c" 36 13 28#
+             (#"task.jc" 142 12 2925# "expl:Requires clause"
+             ((#"/Users/anastasia/Downloads/hw/task.c" 56 13 28#
               "expl:Requires clause"
               ((=) (ComputerDivision.mod (Uint32.to_int size_a) (2)) (0)))
              /\
-             (#"task.jc" 87 12 3254# "expl:Requires clause"
-             ((#"/Users/anastasia/Downloads/hw/task.c" 37 13 38#
+             (#"task.jc" 142 12 2925# "expl:Requires clause"
+             ((#"/Users/anastasia/Downloads/hw/task.c" 57 13 38#
               "expl:Requires clause"
               (if ((<=) (0) (Int.(-) (Uint32.to_int size_a) (1))) then
-               (((<=) (offset_min intP_a_7_alloc_table a_1) (0)) /\
-               (((>=) (offset_max intP_a_7_alloc_table a_1)
+               (((<=) (offset_min intP_a_8_alloc_table a_1) (0)) /\
+               (((>=) (offset_max intP_a_8_alloc_table a_1)
                 (Int.(-) (Uint32.to_int size_a) (1)))
-               /\
-               (forall __framac_tmp1 : int.
-                ((((<=) (0) __framac_tmp1) /\
-                 ((<=) __framac_tmp1 (Int.(-) (Uint32.to_int size_a) (1))))
-                 -> ((=) true true))))) else ((=) true true)))
-             /\
-             (#"task.jc" 87 12 3254# "expl:Requires clause"
-             ((#"/Users/anastasia/Downloads/hw/task.c" 38 13 48#
-              "expl:Requires clause"
-              (if ((<=) (0) (max_ind a_1 size_a intP_intM_a_7)) then
-               (((<=) (offset_min intP_b_8_alloc_table b_0) (0)) /\
-               (((>=) (offset_max intP_b_8_alloc_table b_0)
-                (max_ind a_1 size_a intP_intM_a_7))
                /\
                (forall __framac_tmp2 : int.
                 ((((<=) (0) __framac_tmp2) /\
-                 ((<=) __framac_tmp2 (max_ind a_1 size_a intP_intM_a_7))) ->
+                 ((<=) __framac_tmp2 (Int.(-) (Uint32.to_int size_a) (1))))
+                 -> ((=) true true))))) else ((=) true true)))
+             /\
+             (#"task.jc" 142 12 2925# "expl:Requires clause"
+             ((#"/Users/anastasia/Downloads/hw/task.c" 58 13 48#
+              "expl:Requires clause"
+              (if ((<=) (0) (max_ind a_1 size_a intP_intM_a_8)) then
+               (((<=) (offset_min intP_b_9_alloc_table b) (0)) /\
+               (((>=) (offset_max intP_b_9_alloc_table b)
+                (max_ind a_1 size_a intP_intM_a_8))
+               /\
+               (forall __framac_tmp3 : int.
+                ((((<=) (0) __framac_tmp3) /\
+                 ((<=) __framac_tmp3 (max_ind a_1 size_a intP_intM_a_8))) ->
                  ((=) true true))))) else ((=) true true)))
              /\
-             (#"task.jc" 87 12 3254# "expl:Requires clause"
-             ((#"/Users/anastasia/Downloads/hw/task.c" 39 13 65#
+             (#"task.jc" 142 12 2925# "expl:Requires clause"
+             ((#"/Users/anastasia/Downloads/hw/task.c" 59 13 65#
               "expl:Requires clause"
               (forall k_3 : int.
                ((((<=) (0) k_3) /\ ((<) k_3 (Uint32.to_int size_a))) ->
-                (Int32.(<) (select intP_intM_a_7 (shift a_1 k_3)) size_b))))
+                (Int32.(<) (select intP_intM_a_8 (shift a_1 k_3)) size_b))))
              /\
-             (#"task.jc" 87 12 3254# "expl:Requires clause"
-             ((#"/Users/anastasia/Downloads/hw/task.c" 40 13 77#
+             (#"task.jc" 142 12 2925# "expl:Requires clause"
+             ((#"/Users/anastasia/Downloads/hw/task.c" 60 13 61#
               "expl:Requires clause"
               (forall k_4 : int.
                ((((<=) (0) k_4) /\ ((<) k_4 (Uint32.to_int size_a))) ->
-                (_HasValue b_0 (Int32.to_int size_b)
-                (Int32.to_int (select intP_intM_a_7 (shift a_1 k_4)))
-                !intP_intM_b_8))))
-             /\
-             (#"task.jc" 87 12 3254# "expl:Requires clause"
-             ((#"/Users/anastasia/Downloads/hw/task.c" 41 13 61#
-              "expl:Requires clause"
-              (forall k_5 : int.
-               ((((<=) (0) k_5) /\ ((<) k_5 (Uint32.to_int size_a))) ->
-                (Int32.(>=) (select intP_intM_a_7 (shift a_1 k_5))
-                (#"task.jc" 117 54 66# "expl:Integer cast" (Int32.of_int
+                (Int32.(>=) (select intP_intM_a_8 (shift a_1 k_4))
+                (#"task.jc" 168 52 64# "expl:Integer cast" (Int32.of_int
                 (0)))))))
              /\
-             (#"/Users/anastasia/Downloads/hw/task.c" 42 13 133#
+             (#"/Users/anastasia/Downloads/hw/task.c" 61 13 133#
              "expl:Requires clause"
              (exists mx : int.
               (((<=) (0) mx) /\
               (((<) mx (Uint32.to_int size_a)) /\
-              ((forall k_6 : int.
-                ((((<=) (0) k_6) /\ ((<) k_6 (Uint32.to_int size_a))) ->
-                 (Int32.(<=) (select intP_intM_a_7 (shift a_1 k_6))
-                 (select intP_intM_a_7 (shift a_1 mx)))))
+              ((forall k_5 : int.
+                ((((<=) (0) k_5) /\ ((<) k_5 (Uint32.to_int size_a))) ->
+                 (Int32.(<=) (select intP_intM_a_8 (shift a_1 k_5))
+                 (select intP_intM_a_8 (shift a_1 mx)))))
               /\
               (if
                ((<=) (0)
-               (Int32.to_int (select intP_intM_a_7 (shift a_1 mx)))) then
-               (((<=) (offset_min intP_b_8_alloc_table b_0) (0)) /\
-               (((>=) (offset_max intP_b_8_alloc_table b_0)
-                (Int32.to_int (select intP_intM_a_7 (shift a_1 mx))))
+               (Int32.to_int (select intP_intM_a_8 (shift a_1 mx)))) then
+               (((<=) (offset_min intP_b_9_alloc_table b) (0)) /\
+               (((>=) (offset_max intP_b_9_alloc_table b)
+                (Int32.to_int (select intP_intM_a_8 (shift a_1 mx))))
                /\
-               (forall __framac_tmp3 : int.
-                ((((<=) (0) __framac_tmp3) /\
-                 ((<=) __framac_tmp3
-                 (Int32.to_int (select intP_intM_a_7 (shift a_1 mx))))) ->
-                 ((=) true true))))) else ((=) true true))))))))))))))))))))
-             }
-           reads { intP_intM_b_8, size_b } writes { intP_intM_b_8 }
+               (forall __framac_tmp4 : int.
+                ((((<=) (0) __framac_tmp4) /\
+                 ((<=) __framac_tmp4
+                 (Int32.to_int (select intP_intM_a_8 (shift a_1 mx))))) ->
+                 ((=) true true))))) else ((=) true true)))))))))))))))))) }
+           reads { intP_intM_b_9, size_b } writes { intP_intM_b_9 }
            ensures {
-             (#"/Users/anastasia/Downloads/hw/task.c" 43 23 53#
+             (#"/Users/anastasia/Downloads/hw/task.c" 62 12 44#
              "expl:Ensures clause"
-             (#"/Users/anastasia/Downloads/hw/task.c" 43 23 53#
+             (#"/Users/anastasia/Downloads/hw/task.c" 62 12 44#
              "expl:Ensures clause"
-             ((#"/Users/anastasia/Downloads/hw/task.c" 43 23 53#
+             ((#"/Users/anastasia/Downloads/hw/task.c" 62 12 44#
               "expl:Ensures clause"
-              (_Unchanged_0 b_0 (Int32.to_int size_b) !intP_intM_b_8 (old
-              !intP_intM_b_8)))
+              (_Permutation b (Int32.to_int size_b) !intP_intM_b_9 (old
+              !intP_intM_b_9)))
              /\
-             (#"/Users/anastasia/Downloads/hw/task.c" 44 23 53#
+             (#"/Users/anastasia/Downloads/hw/task.c" 63 23 53#
              "expl:Ensures clause"
-             (_Unchanged_0 a_1 (Uint32.to_int size_a) intP_intM_a_7
-             intP_intM_a_7))))) }
+             (_Unchanged_0 a_1 (Uint32.to_int size_a) intP_intM_a_8
+             intP_intM_a_8))))) }
   
 end
