@@ -24,22 +24,22 @@ occurrences table for axiom a1 in axiomatic MaxInd:
   144: L ;L ;
   
 Typing axiomatic Permut
-Typing lemma/axiom permut_refl
-Typing lemma/axiom permut_sym
-Typing lemma/axiom permut_trans
-Typing lemma/axiom permut_exchange
+Typing lemma/axiom Permut_refl
+Typing lemma/axiom Permut_sym
+Typing lemma/axiom Permut_trans
+Typing lemma/axiom Permut_exchange
 Typing lemma/axiom SwapImmutability
 Typing lemma/axiom Validity
-occurrences table for axiom permut_exchange in axiomatic Permut:
+occurrences table for axiom Permut_exchange in axiomatic Permut:
   145: L1, L2 ;
   
-occurrences table for axiom permut_trans in axiomatic Permut:
+occurrences table for axiom Permut_trans in axiomatic Permut:
   145: L1, L3 ;L2, L3 ;L1, L2 ;
   
-occurrences table for axiom permut_sym in axiomatic Permut:
+occurrences table for axiom Permut_sym in axiomatic Permut:
   145: L2, L1 ;L1, L2 ;
   
-occurrences table for axiom permut_refl in axiomatic Permut:
+occurrences table for axiom Permut_refl in axiomatic Permut:
   145: L, L ;
   
 Computation of call graph
@@ -60,9 +60,9 @@ Component 3:
 max_ind
 
 Component 4:
- permut calls: permut, permut, permut, permut, permut, permut,
-permut, permut, _Swap,
-permut
+ _Permut calls: _Permut, _Permut, _Permut, _Permut, _Permut,
+_Permut, _Permut, _Permut, _Swap,
+_Permut
 
 ******************************
 Call graph: has 1 components
@@ -126,7 +126,7 @@ Effects for logic function max_ind:
 Effects: doing one iteration
 Effects: doing one iteration
 Effects: fixpoint reached
-Effects for logic function permut:
+Effects for logic function _Permut:
  alloc_table: 
  tag_table: 
  memories: (t1_6 : mem-field "intM") at (L1, L2)
@@ -942,7 +942,7 @@ Logic function _Unchanged
 Logic function _Unchanged_0
 Logic function _Swap
 Logic function max_ind
-Logic function permut
+Logic function _Permut
 Translate axiomatic declarations
 Axiomatic MaxInd
 Axiomatic Padding

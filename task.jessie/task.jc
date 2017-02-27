@@ -79,35 +79,35 @@ axiomatic MaxInd {
 
 axiomatic Permut {
 
-  predicate permut{L1, L2}(intP[..] t1, intP[..] t2, integer n_7)
+  predicate _Permut{L1, L2}(intP[..] t1, intP[..] t2, integer n_7)
    
-  axiom permut_refl{L} :
+  axiom Permut_refl{L} :
   (_C_5 : (\forall intP[..] t;
             (\forall integer n_8;
-              permut{L, L}(t, t, n_8))))
+              _Permut{L, L}(t, t, n_8))))
    
-  axiom permut_sym{L1, L2} :
+  axiom Permut_sym{L1, L2} :
   (_C_6 : (\forall intP[..] t1_0;
             (\forall intP[..] t2_0;
               (\forall integer n_9;
-                (permut{L1,
+                (_Permut{L1,
                   L2}(t1_0, t2_0, n_9) ==>
-                  permut{L2,
+                  _Permut{L2,
                   L1}(t2_0, t1_0, n_9))))))
    
-  axiom permut_trans{L1, L2, L3} :
+  axiom Permut_trans{L1, L2, L3} :
   (_C_7 : (\forall intP[..] t1_1;
             (\forall intP[..] t2_1;
               (\forall intP[..] t3;
                 (\forall integer n_10;
-                  ((permut{L1,
+                  ((_Permut{L1,
                      L2}(t1_1, t2_1, n_10) &&
-                     permut{L2,
+                     _Permut{L2,
                      L3}(t2_1, t3, n_10)) ==>
-                    permut{L1,
+                    _Permut{L1,
                     L3}(t1_1, t3, n_10)))))))
    
-  axiom permut_exchange{L1, L2} :
+  axiom Permut_exchange{L1, L2} :
   (_C_8 : (\forall intP[..] t1_2;
             (\forall intP[..] t2_2;
               (\forall integer i_4;
@@ -122,7 +122,7 @@ axiomatic Permut {
                             (k_2 != j_1)) ==>
                            (\at((t1_2 + k_2).intM,L1) ==
                              \at((t2_2 + k_2).intM,L2))))) ==>
-                      permut{L1,
+                      _Permut{L1,
                       L2}(t1_2, t2_2, n_11))))))))
    
   lemma SwapImmutability{L1, L2} :
@@ -136,7 +136,7 @@ axiomatic Permut {
                      _Swap{L1,
                      L2}(a_7, (i_5 :> integer), (j_2 :> integer),
                          (n_12 :> integer))) ==>
-                    permut{L1,
+                    _Permut{L1,
                     L2}(a_7, a_7, (n_12 :> integer))))))))
    
   lemma Validity{L1} :
@@ -151,7 +151,7 @@ axiomatic Permut {
                                   (((\at(k_3,L1) <= __framac_tmp1) &&
                                      (__framac_tmp1 <= \at(k_3,L1))) ==>
                                     true))),L1),L1)))) ==>
-                 permut{L1,
+                 _Permut{L1,
                  L1}(a_8, a_8, (n_13 :> integer))))))
   
 }
@@ -159,8 +159,8 @@ axiomatic Permut {
 int32 size_b;
 
 unit task(intP[..] a, intP[..] b, uint32 size_a)
-  requires ((_C_48 : (((size_a :> integer) % 2) == 0)) &&
-             ((_C_49 : \at((if (\at(0,Here) <=
+  requires ((_C_49 : (((size_a :> integer) % 2) == 0)) &&
+             ((_C_50 : \at((if (\at(0,Here) <=
                                  \at(((size_a :> integer) - 1),Here)) then 
                            (((\offset_min(\at(a,Here)) <= \at(0,Here)) &&
                               (\offset_max(\at(a,Here)) >=
@@ -170,7 +170,7 @@ unit task(intP[..] a, intP[..] b, uint32 size_a)
                                   (__framac_tmp2 <=
                                     \at(((size_a :> integer) - 1),Here))) ==>
                                  true))) else true),Here)) &&
-               ((_C_50 : \at((if (\at(0,Here) <=
+               ((_C_51 : \at((if (\at(0,Here) <=
                                    \at(max_ind{Here}(a, size_a),Here)) then 
                              (((\offset_min(\at(b,Here)) <= \at(0,Here)) &&
                                 (\offset_max(\at(b,Here)) >=
@@ -180,13 +180,13 @@ unit task(intP[..] a, intP[..] b, uint32 size_a)
                                     (__framac_tmp3 <=
                                       \at(max_ind{Here}(a, size_a),Here))) ==>
                                    true))) else true),Here)) &&
-                 ((_C_51 : (\forall integer k_4;
+                 ((_C_52 : (\forall integer k_4;
                              (((0 <= k_4) && (k_4 < (size_a :> integer))) ==>
                                ((a + k_4).intM < size_b)))) &&
-                   ((_C_52 : (\forall integer k_5;
+                   ((_C_53 : (\forall integer k_5;
                                (((0 <= k_5) && (k_5 < (size_a :> integer))) ==>
                                  ((a + k_5).intM >= (0 :> int32))))) &&
-                     (_C_53 : (\exists integer mx;
+                     (_C_54 : (\exists integer mx;
                                 ((((0 <= mx) && (mx < (size_a :> integer))) &&
                                    (\forall integer k_6;
                                      (((0 <= k_6) &&
@@ -204,9 +204,9 @@ unit task(intP[..] a, intP[..] b, uint32 size_a)
                                                \at((a + mx).intM,Here))) ==>
                                             true))) else true),Here)))))))));
 behavior default:
-  ensures (_C_45 : ((_C_46 : permut{Old,
-                    Here}(\at(b,Old), \at(b,Old), (size_b :> integer))) &&
-                     (_C_47 : _Unchanged_0{Old,
+  ensures (_C_46 : ((_C_47 : _Permut{Old,
+                    Here}(\at(b,Old), \at(b,Old), ((size_b :> integer) - 1))) &&
+                     (_C_48 : _Unchanged_0{Old,
                      Here}(\at(a,Old), (\at(size_a,Old) :> integer)))));
 {  
    (var uint32 i);
@@ -222,7 +222,8 @@ behavior default:
       behavior default:
         invariant (_C_14 : (((i :> integer) % 2) == 0));
       behavior default:
-        invariant (_C_13 : permut{Pre, Here}(b, b, (size_b :> integer)));
+        invariant (_C_13 : _Permut{Pre,
+                  Here}(b, b, ((size_b :> integer) - 1)));
       behavior default:
         
         assigns i,
@@ -247,9 +248,17 @@ behavior default:
                                                                  (_C_36 : (
                                                                  (_C_35 : 
                                                                  (i +
-                                                                   (1 :> uint32))) :> uint32)))).intM))).intM) = tmp))
+                                                                   (1 :> uint32))) :> uint32)))).intM))).intM) = tmp));
+               
+               {  
+                  (assert for default: (_C_42 : (jessie : _Permut{Pre,
+                                                Here}(b, b,
+                                                      ((size_b :> integer) -
+                                                        1)))));
+                  ()
+               }
             };
-            (_C_44 : (i = (_C_43 : ((_C_42 : (i + (2 :> uint32))) :> uint32))))
+            (_C_45 : (i = (_C_44 : ((_C_43 : (i + (2 :> uint32))) :> uint32))))
          }
       };
       (while_0_break : ());
