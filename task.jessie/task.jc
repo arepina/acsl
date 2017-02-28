@@ -205,7 +205,7 @@ unit task(intP[..] a, intP[..] b, uint32 size_a)
                                             true))) else true),Here)))))))));
 behavior default:
   ensures (_C_46 : ((_C_47 : _Permut{Old,
-                    Here}(\at(b,Old), \at(b,Old), ((size_b :> integer) - 1))) &&
+                    Here}(\at(b,Old), \at(b,Old), (size_b :> integer))) &&
                      (_C_48 : _Unchanged_0{Old,
                      Here}(\at(a,Old), (\at(size_a,Old) :> integer)))));
 {  
@@ -222,19 +222,15 @@ behavior default:
       behavior default:
         invariant (_C_14 : (((i :> integer) % 2) == 0));
       behavior default:
-        invariant (_C_13 : _Permut{Pre,
-                  Here}(b, b, ((size_b :> integer) - 1)));
-      behavior default:
-        
-        assigns i,
-        b;
+        invariant (_C_13 : _Permut{Pre, Here}(b, b, (size_b :> integer)));
       variant (_C_12 : ((size_a :> integer) - (i :> integer)));
       while (true)
       {  
          {  (if (_C_18 : (i < size_a)) then () else 
             (goto while_0_break));
             
-            {  (_C_23 : (tmp = (_C_22 : (_C_21 : (b +
+            {  (Before : ());
+               (_C_23 : (tmp = (_C_22 : (_C_21 : (b +
                                                    (_C_20 : (_C_19 : (a + i)).intM))).intM)));
                (_C_34 : ((_C_33 : (_C_32 : (b +
                                              (_C_31 : (_C_30 : (a + i)).intM))).intM) = 
@@ -251,10 +247,12 @@ behavior default:
                                                                    (1 :> uint32))) :> uint32)))).intM))).intM) = tmp));
                
                {  
-                  (assert for default: (_C_42 : (jessie : _Permut{Pre,
-                                                Here}(b, b,
-                                                      ((size_b :> integer) -
-                                                        1)))));
+                  (assert for default: (_C_42 : (jessie : _Swap{Before,
+                                                Here}(b,
+                                                      ((a + (i :> integer)).intM :> integer),
+                                                      ((a +
+                                                         ((i :> integer) + 1)).intM :> integer),
+                                                      (size_b :> integer)))));
                   ()
                }
             };

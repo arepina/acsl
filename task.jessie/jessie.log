@@ -144,7 +144,7 @@ Effects for function task:
  reads:  alloc_table: (b_9 : alloc-root "intP") at (Here),
                       (a_8 : alloc-root "intP") at (Here)
          tag_table: (b_9 : intP) at (Here), (a_8 : intP) at (Here)
-         memories: (b_9 : mem-field "intM") at (Here, Pre, Old),
+         memories: (b_9 : mem-field "intM") at (Here, Pre, Old, Before),
                    (a_8 : mem-field "intM") at (Here, Old)
          raw memories: (b_9 : mem-field "intM") at (Here),
                        (a_8 : mem-field "intM") at (Here)

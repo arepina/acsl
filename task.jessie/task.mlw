@@ -2131,6 +2131,8 @@ module Function_task_safety
   
   use import ref.Ref 
   
+  use import Logic__Swap 
+  
   use import core.Jessie_upd_offset_safe 
   
   use import core.Jessie_tag_table_type 
@@ -2269,15 +2271,15 @@ module Function_task_safety
       "expl:Pointer index bounds" true) }); _jessie_17 end));
       'Loop_2:
       loop
-      invariant { (#"task.jc" 218 6 2172# true) }
+      invariant { (#"task.jc" 218 6 2302# true) }
         variant { (#"/Users/anastasia/Downloads/hw/task.c" 79 19 29#
           (Int.(-) (Uint32.to_int size_a) (Uint32.to_int !i))) }
        begin
        any unit
        requires { true } reads { b, intP_intM_b_9, size_a, size_b }
        ensures {
-         ((#"/Users/anastasia/Downloads/hw/task.c" 78 21 56#
-          (_Permut b b (Int.(-) (Int32.to_int size_b) (1)) !intP_intM_b_9 (at
+         ((#"/Users/anastasia/Downloads/hw/task.c" 78 21 52#
+          (_Permut b b (Int32.to_int size_b) !intP_intM_b_9 (at
           !intP_intM_b_9 'Init)))
          /\
          ((#"/Users/anastasia/Downloads/hw/task.c" 77 21 31#
@@ -2297,85 +2299,93 @@ module Function_task_safety
          (#"/Users/anastasia/Downloads/hw/task.c" 81 25 35#
          (Safe_uint32.(<)  !i size_a )) then ()
          else (raise (Goto_while_0_break_exc ())));
+          'Before:
           begin
-          (tmp :=
-           (let _jessie_18 =
-           (#"/Users/anastasia/Downloads/hw/task.c" 82 18 25#
-           "expl:Pointer dereference"
-           (acc_offset_typesafe  intP_b_9_alloc_table !intP_intM_b_9 b
-            (Safe_int32.to_int 
-             (#"/Users/anastasia/Downloads/hw/task.c" 82 20 24#
-             "expl:Pointer dereference"
-             (acc_offset_typesafe  intP_a_8_alloc_table intP_intM_a_8 a_1
-              (Safe_uint32.to_int  !i ) )) ) )) in
+          'Before: ();
            begin
-           (assert {
-           (#"/Users/anastasia/Downloads/hw/task.c" 82 8 11#
-           "expl:Pointer index bounds" true) }); _jessie_18 end));
-           begin
-           (let _jessie_20 =
-           (let _jessie_19 =
-           (#"/Users/anastasia/Downloads/hw/task.c" 83 18 29#
-           "expl:Pointer dereference"
-           (acc_offset_typesafe  intP_b_9_alloc_table !intP_intM_b_9 b
-            (Safe_int32.to_int 
-             (#"/Users/anastasia/Downloads/hw/task.c" 83 20 28#
-             "expl:Pointer dereference"
-             (acc_offset_typesafe  intP_a_8_alloc_table intP_intM_a_8 a_1
-              (Safe_uint32.to_int 
-               (Safe_uint32.(+)  !i
-                (#"task.jc" 245 67 80# "expl:Integer cast"
-                (Safe_uint32.of_int (1))) ) ) )) ) )) in
-           begin
-           (assert {
-           (#"/Users/anastasia/Downloads/hw/task.c" 83 8 29#
-           "expl:Pointer index bounds" true) }); _jessie_19 end) in
-           (let _jessie_21 = b in
-           (let _jessie_22 =
-           (Safe_int32.to_int 
-            (#"/Users/anastasia/Downloads/hw/task.c" 83 10 14#
+           (tmp :=
+            (let _jessie_18 =
+            (#"/Users/anastasia/Downloads/hw/task.c" 83 18 25#
             "expl:Pointer dereference"
-            (acc_offset_typesafe  intP_a_8_alloc_table intP_intM_a_8 a_1
-             (Safe_uint32.to_int  !i ) )) ) in
-           (let _jessie_23 = (shift_typesafe  _jessie_21 _jessie_22 ) in
-           (#"/Users/anastasia/Downloads/hw/task.c" 83 8 29#
-           "expl:Pointer dereference"
-           (upd_offset_typesafe  intP_b_9_alloc_table intP_intM_b_9
-            _jessie_21 _jessie_22 _jessie_20 ))))));
-            begin
-            (let _jessie_25 =
-            (let _jessie_24 = !tmp in
+            (acc_offset_typesafe  intP_b_9_alloc_table !intP_intM_b_9 b
+             (Safe_int32.to_int 
+              (#"/Users/anastasia/Downloads/hw/task.c" 83 20 24#
+              "expl:Pointer dereference"
+              (acc_offset_typesafe  intP_a_8_alloc_table intP_intM_a_8 a_1
+               (Safe_uint32.to_int  !i ) )) ) )) in
             begin
             (assert {
-            (#"/Users/anastasia/Downloads/hw/task.c" 84 8 25#
-            "expl:Pointer index bounds" true) }); _jessie_24 end) in
-            (let _jessie_26 = b in
-            (let _jessie_27 =
+            (#"/Users/anastasia/Downloads/hw/task.c" 83 8 11#
+            "expl:Pointer index bounds" true) }); _jessie_18 end));
+            begin
+            (let _jessie_20 =
+            (let _jessie_19 =
+            (#"/Users/anastasia/Downloads/hw/task.c" 84 18 29#
+            "expl:Pointer dereference"
+            (acc_offset_typesafe  intP_b_9_alloc_table !intP_intM_b_9 b
+             (Safe_int32.to_int 
+              (#"/Users/anastasia/Downloads/hw/task.c" 84 20 28#
+              "expl:Pointer dereference"
+              (acc_offset_typesafe  intP_a_8_alloc_table intP_intM_a_8 a_1
+               (Safe_uint32.to_int 
+                (Safe_uint32.(+)  !i
+                 (#"task.jc" 241 67 80# "expl:Integer cast"
+                 (Safe_uint32.of_int (1))) ) ) )) ) )) in
+            begin
+            (assert {
+            (#"/Users/anastasia/Downloads/hw/task.c" 84 8 29#
+            "expl:Pointer index bounds" true) }); _jessie_19 end) in
+            (let _jessie_21 = b in
+            (let _jessie_22 =
             (Safe_int32.to_int 
-             (#"/Users/anastasia/Downloads/hw/task.c" 84 10 18#
+             (#"/Users/anastasia/Downloads/hw/task.c" 84 10 14#
              "expl:Pointer dereference"
              (acc_offset_typesafe  intP_a_8_alloc_table intP_intM_a_8 a_1
-              (Safe_uint32.to_int 
-               (Safe_uint32.(+)  !i
-                (#"task.jc" 251 67 80# "expl:Integer cast"
-                (Safe_uint32.of_int (1))) ) ) )) ) in
-            (let _jessie_28 = (shift_typesafe  _jessie_26 _jessie_27 ) in
-            (#"/Users/anastasia/Downloads/hw/task.c" 84 8 25#
+              (Safe_uint32.to_int  !i ) )) ) in
+            (let _jessie_23 = (shift_typesafe  _jessie_21 _jessie_22 ) in
+            (#"/Users/anastasia/Downloads/hw/task.c" 84 8 29#
             "expl:Pointer dereference"
             (upd_offset_typesafe  intP_b_9_alloc_table intP_intM_b_9
-             _jessie_26 _jessie_27 _jessie_25 ))))));
+             _jessie_21 _jessie_22 _jessie_20 ))))));
              begin
-             any unit
-             requires { true } reads { b, intP_intM_b_9, size_b }
-             ensures {
-               (#"/Users/anastasia/Downloads/hw/task.c" 85 8 42#
-               (_Permut b b (Int.(-) (Int32.to_int size_b) (1))
-               !intP_intM_b_9 (at !intP_intM_b_9 'Init))) } ; () end end end
-          end;
+             (let _jessie_25 =
+             (let _jessie_24 = !tmp in
+             begin
+             (assert {
+             (#"/Users/anastasia/Downloads/hw/task.c" 85 8 25#
+             "expl:Pointer index bounds" true) }); _jessie_24 end) in
+             (let _jessie_26 = b in
+             (let _jessie_27 =
+             (Safe_int32.to_int 
+              (#"/Users/anastasia/Downloads/hw/task.c" 85 10 18#
+              "expl:Pointer dereference"
+              (acc_offset_typesafe  intP_a_8_alloc_table intP_intM_a_8 a_1
+               (Safe_uint32.to_int 
+                (Safe_uint32.(+)  !i
+                 (#"task.jc" 247 67 80# "expl:Integer cast"
+                 (Safe_uint32.of_int (1))) ) ) )) ) in
+             (let _jessie_28 = (shift_typesafe  _jessie_26 _jessie_27 ) in
+             (#"/Users/anastasia/Downloads/hw/task.c" 85 8 25#
+             "expl:Pointer dereference"
+             (upd_offset_typesafe  intP_b_9_alloc_table intP_intM_b_9
+              _jessie_26 _jessie_27 _jessie_25 ))))));
+              begin
+              any unit
+              requires { true } reads { a_1, b, intP_intM_b_9, size_b }
+              ensures {
+                (#"/Users/anastasia/Downloads/hw/task.c" 86 8 53#
+                (_Swap b
+                (Int32.to_int
+                (select intP_intM_a_8 (shift a_1 (Uint32.to_int !i))))
+                (Int32.to_int
+                (select intP_intM_a_8
+                (shift a_1 (Int.(+) (Uint32.to_int !i) (1)))))
+                (Int32.to_int size_b) !intP_intM_b_9 (at !intP_intM_b_9
+                'Before))) } ; () end end end end end;
           (i :=
            (let _jessie_29 =
            (Safe_uint32.(+)  !i
-            (#"task.jc" 261 50 63# "expl:Integer cast"
+            (#"task.jc" 259 50 63# "expl:Integer cast"
             (Safe_uint32.of_int (2))) ) in
            begin
            (assert {
@@ -2405,6 +2415,8 @@ module Function_task_behaviors
   
   use import Logic__Unchanged_0 
   
+  use import Logic__Swap 
+  
   use import core.Jessie_upd_unsafe 
   
   use import core.Jessie_tag_table_type 
@@ -2413,13 +2425,9 @@ module Function_task_behaviors
   
   use import core.Jessie_return 
   
-  use import core.Jessie_pset 
-  
   use import core.Jessie_pointer 
   
   use import core.Jessie_memory 
-  
-  use import core.Jessie_assigns 
   
   use import core.Jessie_allocable 
   
@@ -2532,12 +2540,11 @@ module Function_task_behaviors
        ((=) true true))))) else ((=) true true))))))))))))))))))) }
    ensures {
      ("expl:Postcondition"
-     (#"/Users/anastasia/Downloads/hw/task.c" 70 12 46# "expl:Ensures clause"
-     (#"/Users/anastasia/Downloads/hw/task.c" 70 12 46# "expl:Ensures clause"
-     ((#"/Users/anastasia/Downloads/hw/task.c" 70 12 46#
+     (#"/Users/anastasia/Downloads/hw/task.c" 70 12 42# "expl:Ensures clause"
+     (#"/Users/anastasia/Downloads/hw/task.c" 70 12 42# "expl:Ensures clause"
+     ((#"/Users/anastasia/Downloads/hw/task.c" 70 12 42#
       "expl:Ensures clause"
-      (_Permut b b (Int.(-) (Int32.to_int size_b) (1)) !intP_intM_b_9 (old
-      !intP_intM_b_9)))
+      (_Permut b b (Int32.to_int size_b) !intP_intM_b_9 (old !intP_intM_b_9)))
      /\
      (#"/Users/anastasia/Downloads/hw/task.c" 71 23 53# "expl:Ensures clause"
      (_Unchanged_0 a_1 (Uint32.to_int size_a) intP_intM_a_8 intP_intM_a_8))))))
@@ -2554,24 +2561,20 @@ module Function_task_behaviors
       'Loop_1:
       loop
       invariant
-        { (((#"/Users/anastasia/Downloads/hw/task.c" 76 28 44#
-            (#"/Users/anastasia/Downloads/hw/task.c" 76 28 44#
-            ((#"/Users/anastasia/Downloads/hw/task.c" 76 28 34#
-             ((<=) (0) (Uint32.to_int !i)))
-            /\
-            (#"/Users/anastasia/Downloads/hw/task.c" 76 33 44#
-            (Uint32.(<=) !i size_a)))))
-           &&
-           ((#"/Users/anastasia/Downloads/hw/task.c" 77 21 31#
-            ((=) (ComputerDivision.mod (Uint32.to_int !i) (2)) (0)))
-           &&
-           (#"/Users/anastasia/Downloads/hw/task.c" 78 21 56#
-           (_Permut b b (Int.(-) (Int32.to_int size_b) (1)) !intP_intM_b_9
-           (at !intP_intM_b_9 'Init)))))
-          /\
-          (#"task.jc" 218 6 2172# "expl:Assigns clause"
-          (not_assigns intP_b_9_alloc_table intP_b_9_alloc_table (at
-          !intP_intM_b_9 'Loop_1) !intP_intM_b_9 pset_empty))) } 
+        { ((#"/Users/anastasia/Downloads/hw/task.c" 76 28 44#
+           (#"/Users/anastasia/Downloads/hw/task.c" 76 28 44#
+           ((#"/Users/anastasia/Downloads/hw/task.c" 76 28 34#
+            ((<=) (0) (Uint32.to_int !i)))
+           /\
+           (#"/Users/anastasia/Downloads/hw/task.c" 76 33 44#
+           (Uint32.(<=) !i size_a)))))
+          &&
+          ((#"/Users/anastasia/Downloads/hw/task.c" 77 21 31#
+           ((=) (ComputerDivision.mod (Uint32.to_int !i) (2)) (0)))
+          &&
+          (#"/Users/anastasia/Downloads/hw/task.c" 78 21 52#
+          (_Permut b b (Int32.to_int size_b) !intP_intM_b_9 (at
+          !intP_intM_b_9 'Init))))) } 
        begin
        any unit requires { true } ensures { true } ;
         try
@@ -2581,53 +2584,62 @@ module Function_task_behaviors
          (#"/Users/anastasia/Downloads/hw/task.c" 81 25 35#
          (Unsafe_uint32.(<)  !i size_a )) then ()
          else (raise (Goto_while_0_break_exc ())));
+          'Before:
           begin
-          (tmp :=
-           (acc  !intP_intM_b_9
-            (shift_  b
-             (Unsafe_int32.to_int 
-              (acc  intP_intM_a_8 (shift_  a_1 (Unsafe_uint32.to_int  !i ) )
-               ) ) ) ));
+          'Before: ();
            begin
-           (let _jessie_7 =
-           (acc  !intP_intM_b_9
-            (shift_  b
+           (tmp :=
+            (acc  !intP_intM_b_9
+             (shift_  b
+              (Unsafe_int32.to_int 
+               (acc  intP_intM_a_8 (shift_  a_1 (Unsafe_uint32.to_int  !i ) )
+                ) ) ) ));
+            begin
+            (let _jessie_7 =
+            (acc  !intP_intM_b_9
+             (shift_  b
+              (Unsafe_int32.to_int 
+               (acc  intP_intM_a_8
+                (shift_  a_1
+                 (Unsafe_uint32.to_int 
+                  (Unsafe_uint32.(+)  !i
+                   (#"task.jc" 241 67 80# "expl:Integer cast"
+                   (Unsafe_uint32.of_int (1))) ) ) ) ) ) ) ) in
+            (let _jessie_8 = b in
+            (let _jessie_9 =
+            (Unsafe_int32.to_int 
+             (acc  intP_intM_a_8 (shift_  a_1 (Unsafe_uint32.to_int  !i ) ) )
+             ) in
+            (let _jessie_10 = (shift_  _jessie_8 _jessie_9 ) in
+            (upd  intP_intM_b_9 _jessie_10 _jessie_7 )))));
+             begin
+             (let _jessie_12 = !tmp in
+             (let _jessie_13 = b in
+             (let _jessie_14 =
              (Unsafe_int32.to_int 
               (acc  intP_intM_a_8
                (shift_  a_1
                 (Unsafe_uint32.to_int 
                  (Unsafe_uint32.(+)  !i
-                  (#"task.jc" 245 67 80# "expl:Integer cast"
-                  (Unsafe_uint32.of_int (1))) ) ) ) ) ) ) ) in
-           (let _jessie_8 = b in
-           (let _jessie_9 =
-           (Unsafe_int32.to_int 
-            (acc  intP_intM_a_8 (shift_  a_1 (Unsafe_uint32.to_int  !i ) ) )
-            ) in
-           (let _jessie_10 = (shift_  _jessie_8 _jessie_9 ) in
-           (upd  intP_intM_b_9 _jessie_10 _jessie_7 )))));
-            begin
-            (let _jessie_12 = !tmp in
-            (let _jessie_13 = b in
-            (let _jessie_14 =
-            (Unsafe_int32.to_int 
-             (acc  intP_intM_a_8
-              (shift_  a_1
-               (Unsafe_uint32.to_int 
-                (Unsafe_uint32.(+)  !i
-                 (#"task.jc" 251 67 80# "expl:Integer cast"
-                 (Unsafe_uint32.of_int (1))) ) ) ) ) ) in
-            (let _jessie_15 = (shift_  _jessie_13 _jessie_14 ) in
-            (upd  intP_intM_b_9 _jessie_15 _jessie_12 )))));
-             begin
-             (assert {
-             (#"/Users/anastasia/Downloads/hw/task.c" 85 8 42#
-             "expl:Assertion in line 85"
-             (_Permut b b (Int.(-) (Int32.to_int size_b) (1)) !intP_intM_b_9
-             (at !intP_intM_b_9 'Init))) }); () end end end end;
+                  (#"task.jc" 247 67 80# "expl:Integer cast"
+                  (Unsafe_uint32.of_int (1))) ) ) ) ) ) in
+             (let _jessie_15 = (shift_  _jessie_13 _jessie_14 ) in
+             (upd  intP_intM_b_9 _jessie_15 _jessie_12 )))));
+              begin
+              (assert {
+              (#"/Users/anastasia/Downloads/hw/task.c" 86 8 53#
+              "expl:Assertion in line 86"
+              (_Swap b
+              (Int32.to_int
+              (select intP_intM_a_8 (shift a_1 (Uint32.to_int !i))))
+              (Int32.to_int
+              (select intP_intM_a_8
+              (shift a_1 (Int.(+) (Uint32.to_int !i) (1)))))
+              (Int32.to_int size_b) !intP_intM_b_9 (at !intP_intM_b_9
+              'Before))) }); () end end end end end;
           (i :=
            (Unsafe_uint32.(+)  !i
-            (#"task.jc" 261 50 63# "expl:Integer cast"
+            (#"task.jc" 259 50 63# "expl:Integer cast"
             (Unsafe_uint32.of_int (2))) )) end;
           (raise (Loop_continue_exc ())) end with Loop_continue_exc _jessie_3
          -> () end end end; (raise (Goto_while_0_break_exc ())) end with
@@ -8374,8 +8386,6 @@ module Function_task
   
   use enum.Int32 
   
-  use int.Int 
-  
   use import Axiomatic_Permut 
   
   use why3.Bool.Bool 
@@ -8399,14 +8409,14 @@ module Function_task
            requires { true } reads { intP_intM_b_9, size_b } writes {
            intP_intM_b_9 }
            ensures {
-             (#"/Users/anastasia/Downloads/hw/task.c" 70 12 46#
+             (#"/Users/anastasia/Downloads/hw/task.c" 70 12 42#
              "expl:Ensures clause"
-             (#"/Users/anastasia/Downloads/hw/task.c" 70 12 46#
+             (#"/Users/anastasia/Downloads/hw/task.c" 70 12 42#
              "expl:Ensures clause"
-             ((#"/Users/anastasia/Downloads/hw/task.c" 70 12 46#
+             ((#"/Users/anastasia/Downloads/hw/task.c" 70 12 42#
               "expl:Ensures clause"
-              (_Permut b b (Int.(-) (Int32.to_int size_b) (1)) !intP_intM_b_9
-              (old !intP_intM_b_9)))
+              (_Permut b b (Int32.to_int size_b) !intP_intM_b_9 (old
+              !intP_intM_b_9)))
              /\
              (#"/Users/anastasia/Downloads/hw/task.c" 71 23 53#
              "expl:Ensures clause"
@@ -8534,14 +8544,14 @@ module Function_task_safe
                  ((=) true true))))) else ((=) true true)))))))))))))))))) }
            reads { intP_intM_b_9, size_b } writes { intP_intM_b_9 }
            ensures {
-             (#"/Users/anastasia/Downloads/hw/task.c" 70 12 46#
+             (#"/Users/anastasia/Downloads/hw/task.c" 70 12 42#
              "expl:Ensures clause"
-             (#"/Users/anastasia/Downloads/hw/task.c" 70 12 46#
+             (#"/Users/anastasia/Downloads/hw/task.c" 70 12 42#
              "expl:Ensures clause"
-             ((#"/Users/anastasia/Downloads/hw/task.c" 70 12 46#
+             ((#"/Users/anastasia/Downloads/hw/task.c" 70 12 42#
               "expl:Ensures clause"
-              (_Permut b b (Int.(-) (Int32.to_int size_b) (1)) !intP_intM_b_9
-              (old !intP_intM_b_9)))
+              (_Permut b b (Int32.to_int size_b) !intP_intM_b_9 (old
+              !intP_intM_b_9)))
              /\
              (#"/Users/anastasia/Downloads/hw/task.c" 71 23 53#
              "expl:Ensures clause"

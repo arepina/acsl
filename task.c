@@ -67,22 +67,23 @@
     requires \forall integer k; 0 <= k < size_a ==> a[k] < size_b;
     requires \forall integer k; 0 <= k < size_a ==> a[k] >= 0;
     requires \exists integer mx; 0 <= mx < size_a && (\forall integer k; 0 <= k < size_a ==> a[k] <= a[mx]) && \valid(b + (0..a[mx]));
-    ensures Permut{Pre,Here}(b, b, size_b - 1);
+    ensures Permut{Pre,Here}(b, b, size_b);
     ensures unchanged: Unchanged{Pre,Here}(a, size_a);
  */
 void task(int a[], int b[], unsigned size_a) {
     /*@
-      loop assigns i, b;
+      //loop assigns i, b[0..size_b-1];
       loop invariant bound: 0 <= i <= size_a;
       loop invariant i % 2 == 0;
-      loop invariant Permut{Pre, Here}(b, b, size_b - 1);
+      loop invariant Permut{Pre, Here}(b, b, size_b);
       loop variant size_a - i;
    */
     for (unsigned i = 0; i < size_a; i += 2) {
+        //@ghost Before:
         int tmp = b[a[i]];
         b[a[i]] = b[a[i + 1]];
         b[a[i + 1]] = tmp;
-        //@ assert Permut{Pre,Here}(b, b, size_b - 1);
+        //@ assert Swap{Before, Here}(b, a[i], a[i + 1], size_b);
     }
 }
 
