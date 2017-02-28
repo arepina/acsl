@@ -18,10 +18,10 @@ Typing axiomatic MaxInd
 Typing lemma/axiom a1
 Typing lemma/axiom a2
 occurrences table for axiom a2 in axiomatic MaxInd:
-  144: L ;
+  145: L ;
   
 occurrences table for axiom a1 in axiomatic MaxInd:
-  144: L ;L ;
+  145: L ;L ;
   
 Typing axiomatic Permut
 Typing lemma/axiom Permut_refl
@@ -31,20 +31,20 @@ Typing lemma/axiom Permut_exchange
 Typing lemma/axiom SwapImmutability
 Typing lemma/axiom Validity
 occurrences table for axiom Permut_exchange in axiomatic Permut:
-  145: L1, L2 ;
+  146: L1, L2 ;
   
 occurrences table for axiom Permut_trans in axiomatic Permut:
-  145: L1, L3 ;L2, L3 ;L1, L2 ;
+  146: L1, L3 ;L2, L3 ;L1, L2 ;
   
 occurrences table for axiom Permut_sym in axiomatic Permut:
-  145: L2, L1 ;L1, L2 ;
+  146: L2, L1 ;L1, L2 ;
   
 occurrences table for axiom Permut_refl in axiomatic Permut:
-  145: L, L ;
+  146: L, L ;
   
 Computation of call graph
 ***********************************
-Logic call graph: has 5 components
+Logic call graph: has 6 components
 ***********************************
 Component 0:
  _Unchanged calls: 
@@ -56,10 +56,13 @@ Component 2:
  _Swap calls: 
 
 Component 3:
+ _CheckTask calls: 
+
+Component 4:
  max_ind calls: max_ind, max_ind,
 max_ind
 
-Component 4:
+Component 5:
  _Permut calls: _Permut, _Permut, _Permut, _Permut, _Permut,
 _Permut, _Permut, _Permut, _Swap,
 _Permut
@@ -114,10 +117,23 @@ Effects for logic function _Swap:
 Effects: doing one iteration
 Effects: doing one iteration
 Effects: fixpoint reached
+Effects for logic function _CheckTask:
+ alloc_table: 
+ tag_table: 
+ memories: (b_6 : mem-field "intM") at (L1, L2),
+           (a_4_5 : mem-field "intM") at (L1, L2)
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: size_a at (Here), b at (Here), a_4 at (Here)
+
+Effects: doing one iteration
+Effects: doing one iteration
+Effects: fixpoint reached
 Effects for logic function max_ind:
  alloc_table: 
  tag_table: 
- memories: (a_4_5 : mem-field "intM") at (L)
+ memories: (a_5_7 : mem-field "intM") at (L)
  raw memories: 
  precise memories: 
  globals: 
@@ -129,7 +145,7 @@ Effects: fixpoint reached
 Effects for logic function _Permut:
  alloc_table: 
  tag_table: 
- memories: (t1_6 : mem-field "intM") at (L1, L2)
+ memories: (t1_8 : mem-field "intM") at (L1, L2)
  raw memories: 
  precise memories: 
  globals: 
@@ -141,13 +157,13 @@ Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: fixpoint reached
 Effects for function task:
- reads:  alloc_table: (b_9 : alloc-root "intP") at (Here),
-                      (a_8 : alloc-root "intP") at (Here)
-         tag_table: (b_9 : intP) at (Here), (a_8 : intP) at (Here)
-         memories: (b_9 : mem-field "intM") at (Here, Pre, Old, Before),
-                   (a_8 : mem-field "intM") at (Here, Old)
-         raw memories: (b_9 : mem-field "intM") at (Here),
-                       (a_8 : mem-field "intM") at (Here)
+ reads:  alloc_table: (b_11 : alloc-root "intP") at (Here),
+                      (a_10 : alloc-root "intP") at (Here)
+         tag_table: (b_11 : intP) at (Here), (a_10 : intP) at (Here)
+         memories: (b_11 : mem-field "intM") at (Here, Pre, Old, Before),
+                   (a_10 : mem-field "intM") at (Here, Pre, Old)
+         raw memories: (b_11 : mem-field "intM") at (Here),
+                       (a_10 : mem-field "intM") at (Here)
          precise memories: 
          globals: size_b at (Here)
          locals: tmp at (Here), i at (Here), size_a at (Here), b at (Here),
@@ -155,8 +171,8 @@ Effects for function task:
 
  writes:  alloc_table: 
           tag_table: 
-          memories: (b_9 : mem-field "intM") at (Here)
-          raw memories: (b_9 : mem-field "intM") at (Here)
+          memories: (b_11 : mem-field "intM") at (Here)
+          raw memories: (b_11 : mem-field "intM") at (Here)
           precise memories: 
           globals: 
           locals: tmp at (Here), i at (Here)
@@ -941,6 +957,7 @@ Translate standalone logic functions
 Logic function _Unchanged
 Logic function _Unchanged_0
 Logic function _Swap
+Logic function _CheckTask
 Logic function max_ind
 Logic function _Permut
 Translate axiomatic declarations

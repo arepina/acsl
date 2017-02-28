@@ -343,30 +343,44 @@
 </theory>
 <theory name="Struct_intP" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
+<theory name="Logic__CheckTask" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+</theory>
 <theory name="Exceptions" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Function_task_safety" sum="a73ec8b7c4fbc3b868f40a3e814067db">
+<theory name="Function_task_safety" sum="012e8d3c35605558a9bc5abdf2ab206c">
  <goal name="WP_parameter task" expl="Function task, safety">
  <proof prover="0" obsolete="true"><result status="timeout" time="4.97"/></proof>
  <transf name="split_goal_wp">
   <goal name="WP_parameter task.1" expl="1. Integer cast (integer overflow)">
   <proof prover="0"><result status="valid" time="0.02" steps="9"/></proof>
-  <proof prover="1" obsolete="true"><result status="valid" time="0.11"/></proof>
+  <proof prover="1" obsolete="true"><result status="valid" time="0.09"/></proof>
   </goal>
   <goal name="WP_parameter task.2" expl="2. Pointer dereference (Dereference by offset. Validity)">
-  <proof prover="0"><result status="valid" time="0.02" steps="17"/></proof>
-  <proof prover="1" obsolete="true"><result status="timeout" time="4.97"/></proof>
+  <proof prover="0" obsolete="true"><result status="valid" time="0.02" steps="18"/></proof>
+  <proof prover="1" obsolete="true"><result status="valid" time="0.10"/></proof>
   </goal>
   <goal name="WP_parameter task.3" expl="3. Pointer dereference (Dereference by offset. Validity)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.13" steps="432"/></proof>
+  <proof prover="1" obsolete="true"><result status="valid" time="0.26"/></proof>
+  </goal>
+  <goal name="WP_parameter task.4" expl="4. Integer cast (integer overflow)">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.03" steps="26"/></proof>
+  <proof prover="1" obsolete="true"><result status="valid" time="0.13"/></proof>
+  </goal>
+  <goal name="WP_parameter task.5" expl="5. integer overflow">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.05" steps="119"/></proof>
+  <proof prover="1" obsolete="true"><result status="valid" time="0.22"/></proof>
+  </goal>
+  <goal name="WP_parameter task.6" expl="6. Pointer dereference (Dereference by offset. Validity)">
   <transf name="split_goal_wp">
-   <goal name="WP_parameter task.3.1" expl="1. Function task, safety">
+   <goal name="WP_parameter task.6.1" expl="1. Function task, safety">
    <transf name="inline_goal">
-    <goal name="WP_parameter task.3.1.1" expl="1. Function task, safety">
+    <goal name="WP_parameter task.6.1.1" expl="1. Function task, safety">
     <transf name="inline_goal">
-     <goal name="WP_parameter task.3.1.1.1" expl="1. Function task, safety">
+     <goal name="WP_parameter task.6.1.1.1" expl="1. Function task, safety">
      <transf name="inline_goal">
-      <goal name="WP_parameter task.3.1.1.1.1" expl="1. Function task, safety">
-      <proof prover="0"><result status="valid" time="0.02" steps="216"/></proof>
+      <goal name="WP_parameter task.6.1.1.1.1" expl="1. Function task, safety">
+      <proof prover="0" obsolete="true"><result status="valid" time="0.02" steps="30"/></proof>
       <proof prover="1" obsolete="true"><result status="valid" time="0.11"/></proof>
       </goal>
      </transf>
@@ -375,100 +389,91 @@
     </goal>
    </transf>
    </goal>
-   <goal name="WP_parameter task.3.2" expl="2. Function task, safety">
-   <proof prover="0"><result status="valid" time="0.03" steps="145"/></proof>
+   <goal name="WP_parameter task.6.2" expl="2. Function task, safety">
+   <proof prover="0" obsolete="true"><result status="valid" time="0.03" steps="64"/></proof>
    <proof prover="1" obsolete="true"><result status="valid" time="0.13"/></proof>
    </goal>
   </transf>
   </goal>
-  <goal name="WP_parameter task.4" expl="4. Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.02" steps="25"/></proof>
-  <proof prover="1" obsolete="true"><result status="valid" time="0.11"/></proof>
-  </goal>
-  <goal name="WP_parameter task.5" expl="5. integer overflow">
-  <proof prover="0"><result status="valid" time="0.05" steps="118"/></proof>
-  <proof prover="1" obsolete="true"><result status="valid" time="0.22"/></proof>
-  </goal>
-  <goal name="WP_parameter task.6" expl="6. Pointer dereference (Dereference by offset. Validity)">
-  <proof prover="0"><result status="valid" time="0.13" steps="70"/></proof>
-  <proof prover="1" obsolete="true"><result status="valid" time="0.26"/></proof>
-  </goal>
   <goal name="WP_parameter task.7" expl="7. Pointer dereference (Dereference by offset. Validity)">
-  <proof prover="0"><result status="valid" time="0.20" steps="506"/></proof>
-  <proof prover="1" obsolete="true"><result status="valid" time="0.10"/></proof>
+  <proof prover="0" obsolete="true"><result status="valid" time="0.22" steps="507"/></proof>
+  <proof prover="1" obsolete="true"><result status="timeout" time="4.97"/></proof>
   </goal>
   <goal name="WP_parameter task.8" expl="8. Pointer dereference (Dereference by offset. Validity)">
-  <proof prover="0"><result status="valid" time="0.02" steps="30"/></proof>
-  <proof prover="1" obsolete="true"><result status="valid" time="0.13"/></proof>
+  <proof prover="0" obsolete="true"><result status="valid" time="0.02" steps="31"/></proof>
+  <proof prover="1" obsolete="true"><result status="valid" time="0.08"/></proof>
   </goal>
   <goal name="WP_parameter task.9" expl="9. Pointer dereference (Assignment with offset)">
-  <proof prover="0"><result status="valid" time="0.02" steps="30"/></proof>
-  <proof prover="1" obsolete="true"><result status="valid" time="0.11"/></proof>
+  <proof prover="0" obsolete="true"><result status="valid" time="0.02" steps="31"/></proof>
+  <proof prover="1" obsolete="true"><result status="valid" time="0.08"/></proof>
   </goal>
   <goal name="WP_parameter task.10" expl="10. Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.03" steps="31"/></proof>
-  <proof prover="1" obsolete="true"><result status="valid" time="0.13"/></proof>
+  <proof prover="0" obsolete="true"><result status="valid" time="0.02" steps="32"/></proof>
+  <proof prover="1" obsolete="true"><result status="valid" time="0.11"/></proof>
   </goal>
   <goal name="WP_parameter task.11" expl="11. integer overflow">
-  <proof prover="0"><result status="valid" time="0.02" steps="32"/></proof>
+  <proof prover="0" obsolete="true"><result status="valid" time="0.02" steps="33"/></proof>
   <proof prover="1" obsolete="true"><result status="valid" time="0.14"/></proof>
   </goal>
   <goal name="WP_parameter task.12" expl="12. Pointer dereference (Dereference by offset. Validity)">
-  <proof prover="0"><result status="valid" time="0.02" steps="34"/></proof>
-  <proof prover="1" obsolete="true"><result status="valid" time="0.08"/></proof>
+  <proof prover="0" obsolete="true"><result status="valid" time="0.02" steps="35"/></proof>
+  <proof prover="1" obsolete="true"><result status="valid" time="0.11"/></proof>
   </goal>
   <goal name="WP_parameter task.13" expl="13. Pointer dereference (Assignment with offset)">
-  <proof prover="0"><result status="valid" time="0.02" steps="36"/></proof>
-  <proof prover="1" obsolete="true"><result status="valid" time="0.08"/></proof>
+  <proof prover="0" obsolete="true"><result status="valid" time="0.02" steps="37"/></proof>
+  <proof prover="1" obsolete="true"><result status="valid" time="0.13"/></proof>
   </goal>
   <goal name="WP_parameter task.14" expl="14. Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.02" steps="51"/></proof>
-  <proof prover="1" obsolete="true"><result status="valid" time="0.09"/></proof>
+  <proof prover="0" obsolete="true"><result status="valid" time="0.02" steps="52"/></proof>
+  <proof prover="1" obsolete="true"><result status="valid" time="0.11"/></proof>
   </goal>
   <goal name="WP_parameter task.15" expl="15. integer overflow">
-  <proof prover="0"><result status="valid" time="0.13" steps="278"/></proof>
+  <proof prover="0" obsolete="true"><result status="valid" time="0.26" steps="279"/></proof>
   <proof prover="1" obsolete="true"><result status="valid" time="0.18"/></proof>
   </goal>
   <goal name="WP_parameter task.16" expl="16. loop variant decrease">
-  <proof prover="0"><result status="valid" time="0.03" steps="45"/></proof>
+  <proof prover="0" obsolete="true"><result status="valid" time="0.03" steps="46"/></proof>
   <proof prover="1" obsolete="true"><result status="valid" time="0.11"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="Function_task_behaviors" sum="1fd0ccdaf8b35333b893a13fd7d85834" expanded="true">
+<theory name="Function_task_behaviors" sum="90e1fe7890a74abd4096fbf841dc380a" expanded="true">
  <goal name="WP_parameter task_ensures_default" expl="Function task, default behavior" expanded="true">
  <proof prover="0" obsolete="true"><result status="timeout" time="4.98"/></proof>
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter task_ensures_default.1" expl="1. loop invariant init">
-  <proof prover="0"><result status="valid" time="0.02" steps="21"/></proof>
+  <proof prover="0"><result status="valid" time="0.02" steps="22"/></proof>
   <proof prover="1" obsolete="true"><result status="valid" time="0.11"/></proof>
   </goal>
-  <goal name="WP_parameter task_ensures_default.2" expl="2. Assertion in line 86">
-  <proof prover="0" steplimit="-1"><result status="valid" time="0.06" steps="133"/></proof>
+  <goal name="WP_parameter task_ensures_default.2" expl="2. Assertion in line 95">
+  <proof prover="0" steplimit="-1"><result status="valid" time="0.06" steps="134"/></proof>
   </goal>
   <goal name="WP_parameter task_ensures_default.3" expl="3. loop invariant preservation" expanded="true">
   <proof prover="0" obsolete="true"><result status="timeout" time="5.07"/></proof>
   <transf name="split_goal_wp" expanded="true">
    <goal name="WP_parameter task_ensures_default.3.1" expl="1. Function task, default behavior">
-   <proof prover="0"><result status="valid" time="0.02" steps="27"/></proof>
+   <proof prover="0"><result status="valid" time="0.02" steps="28"/></proof>
    <proof prover="1" obsolete="true"><result status="valid" time="0.11"/></proof>
    </goal>
    <goal name="WP_parameter task_ensures_default.3.2" expl="2. Function task, default behavior">
-   <proof prover="0"><result status="valid" time="0.05" steps="122"/></proof>
+   <proof prover="0"><result status="valid" time="0.05" steps="123"/></proof>
    <proof prover="1" obsolete="true"><result status="valid" time="0.11"/></proof>
    </goal>
    <goal name="WP_parameter task_ensures_default.3.3" expl="3. Function task, default behavior">
-   <proof prover="0"><result status="valid" time="0.05" steps="121"/></proof>
+   <proof prover="0"><result status="valid" time="0.05" steps="122"/></proof>
    <proof prover="1" obsolete="true"><result status="valid" time="0.65"/></proof>
    </goal>
    <goal name="WP_parameter task_ensures_default.3.4" expl="4. Function task, default behavior">
-   <proof prover="0" steplimit="-1"><result status="valid" time="1.06" steps="1862"/></proof>
+   <proof prover="0" steplimit="-1"><result status="valid" time="0.85" steps="1574"/></proof>
+   </goal>
+   <goal name="WP_parameter task_ensures_default.3.5" expl="5. Function task, default behavior">
+   <proof prover="0" steplimit="-1"><result status="timeout" time="4.90"/></proof>
    </goal>
   </transf>
   </goal>
   <goal name="WP_parameter task_ensures_default.4" expl="4. Ensures clause (Postcondition)">
-  <proof prover="0"><result status="valid" time="0.02" steps="17"/></proof>
+  <proof prover="0"><result status="valid" time="0.02" steps="76"/></proof>
   <proof prover="1" obsolete="true"><result status="timeout" time="5.07"/></proof>
   </goal>
  </transf>

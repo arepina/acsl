@@ -1,11 +1,14 @@
 /*@ predicate Unchanged{K,L}(int* a, integer first, integer last) =
         \forall integer i; first <= i < last ==>
         \at(a[i],K) == \at(a[i],L);
+
     predicate Unchanged{K,L}(int* a, integer n) = Unchanged{K,L}(a, 0, n);
-        lemma UnchangedStep{K,L}:
+
+    lemma UnchangedStep{K,L}:
         \forall int *a, integer n; 0 <= n ==> Unchanged{K,L}(a, n) ==>
         \at(a[n],K) == \at(a[n],L) ==> Unchanged{K,L}(a, n+1);
-        lemma UnchangedSection{K,L}:
+
+    lemma UnchangedSection{K,L}:
         \forall int *a, integer m, n; 0 <= m <= n ==> Unchanged{K,L}(a, n)
         ==> Unchanged{K,L}(a, m);
 */
@@ -15,6 +18,12 @@
        \at(a[j],L1) == \at(a[i],L2) &&
        \forall integer k; 0 <= k < size && k != i && k != j
           ==> \at(a[k],L1) == \at(a[k],L2);
+ */
+
+/*@ predicate CheckTask{L1,L2}(int* a, int* b, integer size_a) =
+        \forall integer i; 0 <= i < size_a && i % 2 == 0
+        ==> (\at(b[a[i]], L1) == \at(b[a[i + 1]], L2))
+        && (\at(b[a[i + 1]], L1) == \at(b[a[i]], L2));
  */
 
 /*@ axiomatic MaxInd{
@@ -69,12 +78,14 @@
     requires \exists integer mx; 0 <= mx < size_a && (\forall integer k; 0 <= k < size_a ==> a[k] <= a[mx]) && \valid(b + (0..a[mx]));
     ensures Permut{Pre,Here}(b, b, size_b);
     ensures unchanged: Unchanged{Pre,Here}(a, size_a);
+    ensures CheckTask{Pre, Here}(a, b, size_a);
  */
 void task(int a[], int b[], unsigned size_a) {
     /*@
       //loop assigns i, b[0..size_b-1];
       loop invariant bound: 0 <= i <= size_a;
       loop invariant i % 2 == 0;
+      loop invariant CheckTask{Pre, Here}(a, b, i);
       loop invariant Permut{Pre, Here}(b, b, size_b);
       loop variant size_a - i;
    */
