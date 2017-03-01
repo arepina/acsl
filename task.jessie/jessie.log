@@ -17,6 +17,9 @@ Typing lemma/axiom UnchangedSection
 Typing axiomatic MaxInd
 Typing lemma/axiom a1
 Typing lemma/axiom a2
+Typing lemma/axiom l1
+Typing lemma/axiom l2
+Typing lemma/axiom l3
 occurrences table for axiom a2 in axiomatic MaxInd:
   145: L ;
   
@@ -59,7 +62,7 @@ Component 3:
  _CheckTask calls: 
 
 Component 4:
- max_ind calls: max_ind, max_ind,
+ max_ind calls: max_ind, max_ind, max_ind, max_ind, max_ind,
 max_ind
 
 Component 5:
@@ -125,7 +128,7 @@ Effects for logic function _CheckTask:
  raw memories: 
  precise memories: 
  globals: 
- locals: size_a at (Here), b at (Here), a_4 at (Here)
+ locals: n_4 at (Here), b at (Here), a_4 at (Here)
 
 Effects: doing one iteration
 Effects: doing one iteration
@@ -133,7 +136,7 @@ Effects: fixpoint reached
 Effects for logic function max_ind:
  alloc_table: 
  tag_table: 
- memories: (a_5_7 : mem-field "intM") at (L)
+ memories: (b_0_7 : mem-field "intM") at (L)
  raw memories: 
  precise memories: 
  globals: 

@@ -20,21 +20,31 @@
           ==> \at(a[k],L1) == \at(a[k],L2);
  */
 
-/*@ predicate CheckTask{L1,L2}(int* a, int* b, integer size_a) =
-        \forall integer i; 0 <= i < size_a && i % 2 == 0
+/*@ predicate CheckTask{L1,L2}(int* a, int* b, integer n) =
+        \forall integer i; 0 <= i < n ==> i % 2 == 0
         ==> (\at(b[a[i]], L1) == \at(b[a[i + 1]], L2))
         && (\at(b[a[i + 1]], L1) == \at(b[a[i]], L2));
  */
 
-/*@ axiomatic MaxInd{
- logic integer max_ind{L}(int *a, unsigned n);
 
- axiom a1:
-    \forall int *a, unsigned n; 0 <= max_ind(a, n) <= n;
- axiom a2:
-    \forall int *a, unsigned n, integer i; 0 <= i < n ==> a[i] <= a[max_ind(a,n)];
- }
-*/
+/*@ axiomatic MaxInd {
+    logic integer max_ind{L}(int *b, unsigned size);
+    axiom a1{L}:
+       \forall int *b, unsigned size; size > 0 ==> 0 <= max_ind(b, size) < size;
+
+    axiom a2{L}:
+       \forall int *b, unsigned size, i; 0 <= i < size ==> b[i] <= b[max_ind(b, size)];
+
+    lemma l1{L}:
+       \forall int *b, unsigned size; size > 0 ==> \exists integer i; 0 <= i < size && i == max_ind(b, size);
+
+    lemma l2{L}:
+       \forall int *b, unsigned size; size > 0 ==> \exists integer i; 0 <= i < size && b[i] == b[max_ind(b, size)];
+
+    lemma l3{L}:
+       \forall int *b, unsigned size, i; 0 <= i < size ==> b[i] <= b[max_ind(b, size)];
+    }
+ */
 
 
 /*@ axiomatic Permut {
