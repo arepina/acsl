@@ -20,15 +20,9 @@
           ==> \at(a[k],L1) == \at(a[k],L2);
  */
 
-/*@ predicate CheckTask{L1,L2}(int* a, int* b, integer n) =
-        \forall integer i; 0 <= i < n ==> i % 2 == 0
-        ==> (\at(b[a[i]], L1) == \at(b[a[i + 1]], L2))
-        && (\at(b[a[i + 1]], L1) == \at(b[a[i]], L2));
- */
-
 
 /*@ axiomatic MaxInd {
-    logic integer max_ind{L}(int *b, unsigned size);
+    logic integer max_ind{L}(int *b, unsigned size) reads b[0..size-1];
     axiom a1{L}:
        \forall int *b, unsigned size; size > 0 ==> 0 <= max_ind(b, size) < size;
 
@@ -78,23 +72,32 @@
  }
 */
 
-//@ ghost int size_b = 5;
+/*@ predicate CheckTask{L1,L2}(int* a, int* b, integer n) =
+        \forall integer i; 0 <= i < n && i % 2 == 0
+        ==> (\at(b[a[i]], L1) == \at(b[a[i + 1]], L2))
+        && (\at(b[a[i + 1]], L1) == \at(b[a[i]], L2));
+ */
+
+//@ ghost unsigned size_b = 5;
 /*@
     requires size_a % 2 == 0;
+    requires size_b == max_ind(a, size_a);
     requires \valid(a + (0..size_a-1));
-    requires \valid(b + (0..max_ind(a, size_a)));
+    requires \valid(b + (0..size_b));
     requires \forall integer k; 0 <= k < size_a ==> a[k] < size_b;
     requires \forall integer k; 0 <= k < size_a ==> a[k] >= 0;
     requires \exists integer mx; 0 <= mx < size_a && (\forall integer k; 0 <= k < size_a ==> a[k] <= a[mx]) && \valid(b + (0..a[mx]));
+    assigns b[0..size_b-1];
     ensures Permut{Pre,Here}(b, b, size_b);
     ensures unchanged: Unchanged{Pre,Here}(a, size_a);
     ensures CheckTask{Pre, Here}(a, b, size_a);
  */
 void task(int a[], int b[], unsigned size_a) {
     /*@
-      //loop assigns i, b[0..size_b-1];
+      loop assigns b[0..size_b-1];
       loop invariant bound: 0 <= i <= size_a;
       loop invariant i % 2 == 0;
+      loop invariant \forall integer k, integer h; 0 <= k <= i && 0 <= h < size_b && h != a[k]  ==> \at(b[h], Pre) == \at(b[h], Here);
       loop invariant CheckTask{Pre, Here}(a, b, i);
       loop invariant Permut{Pre, Here}(b, b, size_b);
       loop variant size_a - i;
@@ -104,6 +107,8 @@ void task(int a[], int b[], unsigned size_a) {
         int tmp = b[a[i]];
         b[a[i]] = b[a[i + 1]];
         b[a[i + 1]] = tmp;
+        //@ assert \at(b[a[i]], Before) == \at(b[a[i + 1]], Here);
+        //@ assert \at(b[a[i + 1]], Before) == \at(b[a[i]], Here);
         //@ assert Swap{Before, Here}(b, a[i], a[i + 1], size_b);
     }
 }

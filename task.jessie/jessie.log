@@ -21,10 +21,10 @@ Typing lemma/axiom l1
 Typing lemma/axiom l2
 Typing lemma/axiom l3
 occurrences table for axiom a2 in axiomatic MaxInd:
-  145: L ;
+  144: L ;
   
 occurrences table for axiom a1 in axiomatic MaxInd:
-  145: L ;L ;
+  144: L ;L ;
   
 Typing axiomatic Permut
 Typing lemma/axiom Permut_refl
@@ -34,16 +34,16 @@ Typing lemma/axiom Permut_exchange
 Typing lemma/axiom SwapImmutability
 Typing lemma/axiom Validity
 occurrences table for axiom Permut_exchange in axiomatic Permut:
-  146: L1, L2 ;
+  145: L1, L2 ;
   
 occurrences table for axiom Permut_trans in axiomatic Permut:
-  146: L1, L3 ;L2, L3 ;L1, L2 ;
+  145: L1, L3 ;L2, L3 ;L1, L2 ;
   
 occurrences table for axiom Permut_sym in axiomatic Permut:
-  146: L2, L1 ;L1, L2 ;
+  145: L2, L1 ;L1, L2 ;
   
 occurrences table for axiom Permut_refl in axiomatic Permut:
-  146: L, L ;
+  145: L, L ;
   
 Computation of call graph
 ***********************************
@@ -59,16 +59,16 @@ Component 2:
  _Swap calls: 
 
 Component 3:
- _CheckTask calls: 
-
-Component 4:
  max_ind calls: max_ind, max_ind, max_ind, max_ind, max_ind,
 max_ind
 
-Component 5:
+Component 4:
  _Permut calls: _Permut, _Permut, _Permut, _Permut, _Permut,
 _Permut, _Permut, _Permut, _Swap,
 _Permut
+
+Component 5:
+ _CheckTask calls: 
 
 ******************************
 Call graph: has 1 components
@@ -120,27 +120,14 @@ Effects for logic function _Swap:
 Effects: doing one iteration
 Effects: doing one iteration
 Effects: fixpoint reached
-Effects for logic function _CheckTask:
- alloc_table: 
- tag_table: 
- memories: (b_6 : mem-field "intM") at (L1, L2),
-           (a_4_5 : mem-field "intM") at (L1, L2)
- raw memories: 
- precise memories: 
- globals: 
- locals: n_4 at (Here), b at (Here), a_4 at (Here)
-
-Effects: doing one iteration
-Effects: doing one iteration
-Effects: fixpoint reached
 Effects for logic function max_ind:
  alloc_table: 
  tag_table: 
- memories: (b_0_7 : mem-field "intM") at (L)
+ memories: (b_5 : mem-field "intM") at (L)
  raw memories: 
  precise memories: 
  globals: 
- locals: 
+ locals: size_0 at (Here)
 
 Effects: doing one iteration
 Effects: doing one iteration
@@ -148,11 +135,24 @@ Effects: fixpoint reached
 Effects for logic function _Permut:
  alloc_table: 
  tag_table: 
- memories: (t1_8 : mem-field "intM") at (L1, L2)
+ memories: (t1_6 : mem-field "intM") at (L1, L2)
  raw memories: 
  precise memories: 
  globals: 
  locals: 
+
+Effects: doing one iteration
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function _CheckTask:
+ alloc_table: 
+ tag_table: 
+ memories: (b_5_9 : mem-field "intM") at (L1, L2),
+           (a_6_8 : mem-field "intM") at (L1, L2)
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: n_11 at (Here), b_5 at (Here), a_6 at (Here)
 
 Effects: doing one iteration...
 Effects: doing one iteration...
@@ -160,13 +160,13 @@ Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: fixpoint reached
 Effects for function task:
- reads:  alloc_table: (b_11 : alloc-root "intP") at (Here),
+ reads:  alloc_table: (b_11 : alloc-root "intP") at (Here, Old),
                       (a_10 : alloc-root "intP") at (Here)
          tag_table: (b_11 : intP) at (Here), (a_10 : intP) at (Here)
          memories: (b_11 : mem-field "intM") at (Here, Pre, Old, Before),
-                   (a_10 : mem-field "intM") at (Here, Pre, Old)
-         raw memories: (b_11 : mem-field "intM") at (Here),
-                       (a_10 : mem-field "intM") at (Here)
+                   (a_10 : mem-field "intM") at (Here, Pre, Old, Before)
+         raw memories: (b_11 : mem-field "intM") at (Here, Pre, Before),
+                       (a_10 : mem-field "intM") at (Here, Before)
          precise memories: 
          globals: size_b at (Here)
          locals: tmp at (Here), i at (Here), size_a at (Here), b at (Here),
@@ -174,8 +174,8 @@ Effects for function task:
 
  writes:  alloc_table: 
           tag_table: 
-          memories: (b_11 : mem-field "intM") at (Here)
-          raw memories: (b_11 : mem-field "intM") at (Here)
+          memories: (b_11 : mem-field "intM") at (Here, Old)
+          raw memories: (b_11 : mem-field "intM") at (Here, Old)
           precise memories: 
           globals: 
           locals: tmp at (Here), i at (Here)
@@ -960,9 +960,9 @@ Translate standalone logic functions
 Logic function _Unchanged
 Logic function _Unchanged_0
 Logic function _Swap
-Logic function _CheckTask
 Logic function max_ind
 Logic function _Permut
+Logic function _CheckTask
 Translate axiomatic declarations
 Axiomatic MaxInd
 Axiomatic Padding
